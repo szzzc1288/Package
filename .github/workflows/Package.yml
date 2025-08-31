@@ -15,6 +15,7 @@ on:
 env:
   TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
 jobs:
   check:
@@ -82,4 +83,4 @@ jobs:
       with:
         retain_days: 0
         keep_minimum_runs: 4
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TOKEN: ${{ secrets.ACCESS_TOKEN }}
