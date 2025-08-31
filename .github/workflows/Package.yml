@@ -44,7 +44,7 @@ jobs:
         chmod +x ${{matrix.target}}.sh
         git clone -b ${{matrix.target}} https://github.com/szzzc1288/Package.git ${{matrix.target}}
         cd ${{matrix.target}}
-        git rm -r --cache * >/dev/null 2>&1 &
+        git rm -r --cache * >/dev/null 2>&1
         rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
         $GITHUB_WORKSPACE/${{matrix.target}}.sh
 
