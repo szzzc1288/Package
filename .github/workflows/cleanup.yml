@@ -1,7 +1,10 @@
 name: Manual Cleanup Repo
 
 on:
-  workflow_dispatch:   # 仅手动触发
+  workflow_dispatch:
+
+permissions:
+  contents: write   # 允许 push 修改仓库内容
 
 jobs:
   cleanup:
@@ -10,10 +13,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}   # 使用默认token，有写权限
 
       - name: Delete all files except whitelist
         run: |
-          # 删除除白名单外的文件
           find . -mindepth 1 -maxdepth 1 \
             ! -name 'main.sh' \
             ! -name 'README.md' \
