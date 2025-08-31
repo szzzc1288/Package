@@ -13,13 +13,17 @@ jobs:
 
       - name: Delete all files except whitelist
         run: |
-          shopt -s extglob dotglob
-          # 暂时把 .git 移走，避免被 rm -rf 删除
-          mv .git ../.git_tmp
-          # 删除除了白名单以外的所有文件和目录
-          rm -rf !("main.sh"|"README.md"|"LICENSE"|".github")
-          # 把 .git 移回来
-          mv ../.git_tmp .git
+          # 删除除白名单外的文件
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name 'main.sh' \
+            ! -name 'README.md' \
+            ! -name 'LICENSE' \
+            ! -name '.github' \
+            ! -name '.git' \
+            -exec rm -rf {} +
+
+      - name: Show remaining files
+        run: ls -la
 
       - name: Commit and push changes
         run: |
