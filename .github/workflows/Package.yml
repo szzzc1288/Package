@@ -13,10 +13,10 @@ on:
   repository_dispatch:
 
 env:
+  TOKEN: ${{ secrets.ACCESS_TOKEN }}
   TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-  TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
+  
 jobs:
   check:
     runs-on: ubuntu-latest
