@@ -3,9 +3,6 @@ name: Manual Cleanup Repo
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write   # 允许 push 修改仓库内容
-
 jobs:
   cleanup:
     runs-on: ubuntu-latest
@@ -14,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}   # 使用默认token，有写权限
+          token: ${{ secrets.ACCESS_TOKEN }}   # 用你设置的 ACCESS_TOKEN，而不是默认 GITHUB_TOKEN
 
       - name: Delete all files except whitelist
         run: |
@@ -38,5 +35,5 @@ jobs:
             echo "✅ No changes to commit"
           else
             git commit -m "Cleanup: remove all files except whitelist"
-            git push
+            git push origin HEAD:main
           fi
