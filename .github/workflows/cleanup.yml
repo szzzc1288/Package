@@ -1,24 +1,25 @@
-name: Cleanup Repository
+name: Manual Cleanup Repo
 
 on:
   workflow_dispatch:   # 仅手动触发
 
-permissions:
-  contents: write   # 允许修改仓库内容
-
 jobs:
   cleanup:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Delete all files except whitelist
         run: |
           shopt -s extglob dotglob
+          # 暂时把 .git 移走，避免被 rm -rf 删除
+          mv .git ../.git_tmp
+          # 删除除了白名单以外的所有文件和目录
           rm -rf !("main.sh"|"README.md"|"LICENSE"|".github")
+          # 把 .git 移回来
+          mv ../.git_tmp .git
 
       - name: Commit and push changes
         run: |
