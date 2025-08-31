@@ -41,9 +41,9 @@ jobs:
             git push origin HEAD:main
           fi
 
-    - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@v2
-      with:
-        retain_days: 0
-        keep_minimum_runs: 3
-        TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          retain_days: 0
+          keep_minimum_runs: 3
+          TOKEN: ${{ secrets.ACCESS_TOKEN }}
