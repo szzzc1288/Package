@@ -82,3 +82,4 @@ jobs:
       with:
         retain_days: 0
         keep_minimum_runs: 4
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
