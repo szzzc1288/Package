@@ -55,6 +55,13 @@ rm -rf small-package
 # lang/lua5.4 \
 # utils/cpulimit utils/filebrowser
 
+git_sparse_clone master "https://github.com/kenzok8/small-package" "immpack" sub-web \
+smartdns dnsproxy haproxy v2raya cdnspeedtest \
+subconverter ngrokc oscam njitclient scutclient gost gowebdav \
+bpytop jpcre2 wxbase rapidjson libcron quickjspp toml11 \
+lua5.4 \
+cpulimit filebrowser
+
 # mv -n openwrt-passwall/* ./ ; rm -Rf openwrt-passwall
 mv -n openwrt-package/* ./ ; rm -Rf openwrt-package
 
