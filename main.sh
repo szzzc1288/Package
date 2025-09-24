@@ -55,11 +55,23 @@ rm -rf small-package
 # lang/lua5.4 \
 # utils/cpulimit utils/filebrowser
 
-git_sparse_clone master "https://github.com/kenzok8/small-package" "immpack" \
-sub-web smartdns dnsproxy haproxy v2raya cdnspeedtest \
+# 拉取 kenzok8/small-package 指定目录到 immpack
+echo "Cloning selected directories from kenzok8/small-package..."
+git clone --filter=blob:none --sparse https://github.com/kenzok8/small-package immpack
+cd immpack
+git sparse-checkout init --cone
+git sparse-checkout set sub-web smartdns dnsproxy haproxy v2raya cdnspeedtest \
 subconverter ngrokc oscam scutclient gost \
 jpcre2 wxbase rapidjson libcron quickjspp toml11 \
 cpulimit filebrowser
+# 将拉取的目录移动到上级目录
+mv -n sub-web smartdns dnsproxy haproxy v2raya cdnspeedtest \
+subconverter ngrokc oscam scutclient gost \
+jpcre2 wxbase rapidjson libcron quickjspp toml11 \
+cpulimit filebrowser ../
+cd ..
+rm -rf immpack
+echo "Selected directories copied to current folder."
 
 # mv -n openwrt-passwall/* ./ ; rm -Rf openwrt-passwall
 mv -n openwrt-package/* ./ ; rm -Rf openwrt-package
