@@ -1205,7 +1205,7 @@ function get_version()
 	if not version or #version == 0 then
 		version = sys.exec("apk list luci-app-passwall 2>/dev/null | awk '/installed/ {print $1}' | cut -d'-' -f4-")
 	end
-	return version or ""
+	return (version or ""):gsub("\n", "")
 end
 
 function to_check_self()
@@ -1221,7 +1221,7 @@ function to_check_self()
 		}
 	end
 	local local_version  = get_version()
-	local remote_version = sys.exec("echo -n $(grep 'PKG_VERSION' /tmp/passwall_makefile|awk -F '=' '{print $2}')")
+	local remote_version = sys.exec("echo -n $(grep '^PKG_VERSION' /tmp/passwall_makefile | head -n 1 | awk -F '=' '{print $2}')")
 	exec("/bin/rm", {"-f", tmp_file})
 
 	local has_update = compare_versions(local_version, "<", remote_version)

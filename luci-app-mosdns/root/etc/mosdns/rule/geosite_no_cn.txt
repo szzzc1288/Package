@@ -1037,6 +1037,8 @@ afao.ac.uk
 afappyending.com
 afewmomentswith.com
 affect3dstore.com
+affinity.api.serifservices.com
+affinity.studio
 affirmtrust.com
 afi.ac.uk
 afkv28.com
@@ -1847,6 +1849,7 @@ aomedia.org
 aomiwang.com
 aopcuk.ac.uk
 aorus.com
+aoxvpn.com
 aoxx69.net
 aozorabank.co.jp
 ap-bangkok.myqcloud.com
@@ -2913,6 +2916,7 @@ awstrack.me
 awstrust.com
 awwcn.buzz
 awwcn.xyz
+awxcdn.com
 axbdoll.com.tw
 axios.com
 axureformac.com
@@ -3258,6 +3262,7 @@ bcrncdn.com
 bctcs.ac.uk
 bcu.ac.uk
 bcuc.ac.uk
+bcvcdn.com
 bcvp0rtal.com
 bcy01.com
 bdc.ac.uk
@@ -3720,6 +3725,7 @@ bethesdagamestudios.com
 bethsoft.com
 betterbim.com
 betterexplained.com
+bettergpt.chat
 betterhash.net
 betterhdporn.com
 betternet.co
@@ -3746,6 +3752,7 @@ bfnn.org
 bfsh.hk
 bftv.ac.uk
 bgc.ac.uk
+bgicdn.com
 bgm.tv
 bgme.me
 bgov.com
@@ -5534,6 +5541,7 @@ cantab.ac.uk
 canterbury.ac.uk
 canterburycollege.ac.uk
 canterburytrust.ac.uk
+canva.com
 canyu.org
 caobian.info
 caochangqing.com
@@ -5726,6 +5734,7 @@ ccfd.org.tw
 ccfe.ac.uk
 cch.ac.uk
 cchere.com
+cchostvps.xyz
 cchsr.ac.uk
 cci.ac.uk
 cciernslabs.com
@@ -5973,6 +5982,7 @@ chatgpt.livekit.cloud
 chatgptvideo.xyz
 chatgptvideob.buzz
 chatnook.com
+chatpdf.com
 chatsex.xxx
 chatter.com
 chatterbate.io
@@ -6636,6 +6646,8 @@ cof.ac.uk
 cofacts.tw
 coffeemanga.to
 cogc.ac.uk
+cohere.ai
+cohere.com
 coinalyze.net
 coinbase.com
 coinbene.com
@@ -7359,6 +7371,7 @@ darksidemagazine.com
 darktech.org
 darlington.ac.uk
 darlingtonlearningandskills.ac.uk
+darmau.co
 darpa.mil
 darrenliuwei.com
 dart.dev
@@ -9299,6 +9312,7 @@ enlighten.org.tw
 enmat.ac.uk
 enorf.ac.uk
 enos.ac.uk
+enpass.io
 enpirion.com
 ensa.ac.uk
 ensemble.ac.uk
@@ -10585,6 +10599,7 @@ flow.dev
 flow.org
 flowfront.com
 flowfront.net
+flowgpt.com
 flowhongkong.net
 flowtype.org
 fluffychat.im
@@ -10646,6 +10661,7 @@ forbiddenasian.com
 forbiddenmomsarchive.com
 force.com
 forduck.cyou
+forefront.ai
 foreignaffairs.com
 foreignpolicy.com
 forestsixth.ac.uk
@@ -12117,6 +12133,7 @@ googleartproject.com
 googleblog.com
 googlebot.com
 googlecapital.com
+googlecensorship.org
 googlecert.net
 googlechinawebmaster.com
 googlecode.com
@@ -12279,6 +12296,7 @@ greatermanchesterinternationalmedicalschool.ac.uk
 greatermanchestermedicalschool.ac.uk
 greatfire.org
 greatfire.us7.list-manage.com
+greatfirevpn.com
 greatfirewall.biz
 greatfirewallofchina.org
 greatretroporn.com
@@ -12999,6 +13017,7 @@ hhvm.com
 hi-on.org.tw
 hibank24.com
 hibdontire.com
+hicairo.com
 hiccears.com
 hidden-advent.org
 hiddenhistorieswwi.ac.uk
@@ -13781,6 +13800,7 @@ hydronationscholars.ac.uk
 hyms.ac.uk
 hyp.ac.uk
 hyper.is
+hyperbeam.com
 hyperdreams.com
 hyperrate.com
 hyperscan.io
@@ -15403,7 +15423,6 @@ jiayoulu.com
 jibemobile.com
 jibunbank.co.jp
 jic.ac.uk
-jichangtj.com
 jieav.com
 jiehua.cz
 jieshibaobao.com
@@ -15712,7 +15731,40 @@ karmapa.org
 karupsha.com
 karupspc.com
 kaspersky-labs.com
+kaspersky.be
+kaspersky.ca
+kaspersky.co.in
+kaspersky.co.jp
+kaspersky.co.kr
+kaspersky.co.th
+kaspersky.co.uk
+kaspersky.co.za
 kaspersky.com
+kaspersky.com.au
+kaspersky.com.br
+kaspersky.com.hk
+kaspersky.com.pl
+kaspersky.com.tr
+kaspersky.com.tw
+kaspersky.com.vn
+kaspersky.cz
+kaspersky.de
+kaspersky.dk
+kaspersky.dz
+kaspersky.es
+kaspersky.fi
+kaspersky.fr
+kaspersky.gr
+kaspersky.it
+kaspersky.kz
+kaspersky.ma
+kaspersky.my
+kaspersky.nl
+kaspersky.pt
+kaspersky.ro
+kaspersky.rs
+kaspersky.ru
+kaspersky.se
 kastatic.org
 katestube.com
 kavkazr.com
@@ -15745,6 +15797,9 @@ kedst.ac.uk
 keele.ac.uk
 keemail.me
 keepandshare.com
+keepass.info
+keeper.io
+keepersecurity.com
 keepmovingwithmovefree.com
 keepyourcad.com
 keezmovies.com
@@ -16115,6 +16170,8 @@ lasersawapp.com
 last.fm
 lastcombat.com
 lastfm.es
+lastpass.com
+lastpass.eu
 lasvegasbmw.com
 latampartneruniversity.com
 latamvmwareforum.com
@@ -16319,6 +16376,7 @@ lewdweb.net
 lewestraining.ac.uk
 lewisham.ac.uk
 lewishamsouthwarkcollege.ac.uk
+lexica.art
 lexisnexis.com
 lexuemei.com
 leyton.ac.uk
@@ -16587,6 +16645,7 @@ llnwi.net
 llwht88.xyz
 llysfasi.ac.uk
 lma.ac.uk
+lmarena.ai
 lmbooks.com
 lmbru.ac.uk
 lmc.ac.uk
@@ -16765,6 +16824,7 @@ lp99.pw
 lpc.ac.uk
 lpmde.ac.uk
 lpsg.com
+lputil.com
 lqpjw.cyou
 lrfdsoftware.com
 lrfz.com
@@ -16818,6 +16878,7 @@ lstmed.ac.uk
 lstmliverpool.ac.uk
 lstonline.ac.uk
 lsxszzg.com
+lt.sntp.uk
 ltcc.ac.uk
 ltea.ac.uk
 ltegroup.ac.uk
@@ -19245,6 +19306,7 @@ neo-miracle.com
 neodaas.ac.uk
 neonatalsociety.ac.uk
 neotokyo.supertop-100.com
+neovim.io
 neow.in
 neowin.net
 nerap.ac.uk
@@ -22992,6 +23054,7 @@ renovacionoffice.com
 renovacionxboxlive.com
 rentaride.com
 rentaride.de
+rentry.co
 renu.ac.uk
 renyurenquan.org
 renzhe.cloud
@@ -23158,6 +23221,7 @@ road-crew.com
 roadshow.hk
 robobat.com
 roboforex.com
+roboform.com
 roborecall.com
 robotoffice.com
 robustnessiskey.com
@@ -25528,6 +25592,7 @@ strode-coll.ac.uk
 strode-college.ac.uk
 strodes.ac.uk
 strodeslanguages.ac.uk
+strongboxsafe.com
 strongvpn.com
 strongwindpress.com
 stroud.ac.uk
@@ -26139,6 +26204,7 @@ tensorflow.org
 tentowns.ac.uk
 tenzinpalmo.com
 terabox.com
+teraboxcdn.com
 terapeack.com
 terapeak.ca
 terapeak.com
@@ -26152,6 +26218,7 @@ termius.com
 termux.com
 termux.dev
 termux.org
+terobox.com
 terraform.io
 terragraph.com
 terrapeak.com
@@ -30856,6 +30923,7 @@ zeit.co
 zeit.sh
 zeitworld.com
 zello.com
+zen-browser.app
 zen8ok.xyz
 zencdn.net
 zencoder.com
@@ -31111,9 +31179,13 @@ full:d1k2us671qcoau.cloudfront.net
 full:d1m7jfoe9zdc1j.cloudfront.net
 full:d1mhjrowxxagfy.cloudfront.net
 full:d1oca24q5dwo6d.cloudfront.net
+full:d1v5ir2lpwr8os.cloudfront.net
 full:d1w2poirtb3as9.cloudfront.net
 full:d1xhnb4ptk05mw.cloudfront.net
 full:d1ymi26ma8va5x.cloudfront.net
+full:d22qjgkvxw22r6.cloudfront.net
+full:d25xi40x97liuc.cloudfront.net
+full:d27xxe7juh1us6.cloudfront.net
 full:d29vzk4ow07wi7.cloudfront.net
 full:d2aba1wr3818hz.cloudfront.net
 full:d2anahhhmp1ffz.cloudfront.net
@@ -31147,6 +31219,7 @@ full:discord-attachments-uploads-prd.storage.googleapis.com
 full:dl.begellhouse.com
 full:dlgarenanow-a.akamaihd.net
 full:dlmobilegarena-a.akamaihd.net
+full:dmqdd6hw24ucf.cloudfront.net
 full:docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com
 full:docker-pinata-support.s3.amazonaws.com
 full:download.visualstudio.microsoft.com
@@ -31217,6 +31290,9 @@ full:hpstore.corpmerchandise.com
 full:hub.slarker.me
 full:hulu.playback.edge.bamgrid.com
 full:i.jeded.com
+full:images-eu.ssl-images-amazon.com
+full:images-fe.ssl-images-amazon.com
+full:images-na.ssl-images-amazon.com
 full:img-prod-cms-rt-microsoft-com.akamaized.net
 full:img-s-msn-com.akamaized.net
 full:impala-media-production.s3.amazonaws.com
@@ -31241,6 +31317,7 @@ full:medone-education.thieme.com
 full:misa-prod.s3.ap-northeast-1.amazonaws.com
 full:mobilelive-hamivideo.cdn.hinet.net
 full:mscrl.microsoft.com
+full:msh.amazon.co.uk
 full:mtalk-dev.google.com
 full:mtalk-staging.google.com
 full:mtalk.google.com
@@ -31410,6 +31487,7 @@ full:spotify.map.fastly.net
 full:spotify.map.fastlylb.net
 full:ssl-lvlt.cdn.ea.com
 full:static-hamivideo.cdn.hinet.net
+full:static.siege-amazon.com
 full:statics-marketingsites-eas-ms-com.akamaized.net
 full:statics-marketingsites-eus-ms-com.akamaized.net
 full:statics-marketingsites-wcus-ms-com.akamaized.net
