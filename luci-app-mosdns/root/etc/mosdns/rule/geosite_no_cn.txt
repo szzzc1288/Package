@@ -766,6 +766,7 @@ addtoany.com
 addyoutube.com
 adelaidebbs.com
 adelaidenow.com.au
+adfox.ru
 adgoogle.net
 adguard-dns.com
 adguard-dns.io
@@ -800,6 +801,7 @@ adidas.ru
 adidas.se
 adinst.com
 admeld.com
+admetrica.ru
 admob-cn.com
 admob.com
 adobe-aemassets-value.com
@@ -927,6 +929,7 @@ advertfan.com
 advertisercommunity.com
 adx.promo
 ae-ad-1.myhuaweicloud.com
+ae-rus.net
 ae.hao123.com
 ae.org
 aeasyshop.com
@@ -938,6 +941,7 @@ aerogard.com.au
 aerogardcn.com
 aerospace-cadcam.com
 aerospace-design.com
+aestatic.net
 aesworkshops.com
 aex.com
 af-east-201.myhuaweicloud.com
@@ -996,6 +1000,7 @@ ahtops.com
 ahtranny.com
 ahvideosexe.com
 ahxxx.club
+ai-sdk.dev
 ai.binwang.me
 ai.dev
 ai7995.site
@@ -1160,6 +1165,7 @@ akiba-web.com
 akinator.com
 akita-bank.co.jp
 akow.org
+akstat.io
 akthelp.com
 al-islam.com
 alabout.com
@@ -1560,8 +1566,8 @@ ancensored.com
 anchor.fm
 anchorfree.com
 ancsconf.org
-and
 andfaraway.net
+android
 android-x86.org
 android.com
 androidapksfree.com
@@ -3469,7 +3475,6 @@ bing
 bing.com
 bing.net
 bing123.com
-bingads.com
 bingagencyawards.com
 bingapis.com
 bingapistatistics.com
@@ -4892,7 +4897,6 @@ cbbank.com.mm
 cbc.ca
 cbi.ir
 cbm.com.mm
-cbs
 cbs.com
 cbs.ntu.edu.tw
 cbsaavideo.com
@@ -5632,6 +5636,9 @@ comdotgame.com
 come29.xyz
 comefromchina.com
 cometotheduckside.com
+comfy.org
+comfyci.org
+comfyregistry.org
 comic-mega.me
 comicbox.xyz
 comicscartoonporn.com
@@ -8107,7 +8114,6 @@ facebook30.com
 facebook30.net
 facebook30.org
 facebook4business.com
-facebookads.com
 facebookadvertisingsecrets.com
 facebookappcenter.info
 facebookappcenter.net
@@ -10806,6 +10812,7 @@ heywire.com
 heyzo.com
 hf-iphone.com
 hf.co
+hf.space
 hg.cool
 hgamer.pro
 hgseav.com
@@ -13391,6 +13398,7 @@ kinkypeepz.com
 kinmen.org.tw
 kinmen.travel
 kinokuniya.com
+kinopoisk-ru.clstorage.net
 kinopoisk.ru
 kir.jp
 kir2kos.net
@@ -14489,7 +14497,6 @@ mcadforums.com
 mcaf.ee
 mcafee.com
 mcb.com.mm
-mcd
 mcd-holdings.co.jp
 mcd.com
 mcdelivery.co.id
@@ -14502,7 +14509,6 @@ mcdelivery.com.sg
 mcdelivery.com.tw
 mcdindia.com
 mcdindonesia.com
-mcdonalds
 mcdonalds-online.com
 mcdonalds.be
 mcdonalds.ca
@@ -14758,7 +14764,6 @@ microsoft.vn
 microsoft365.com
 microsoftaccountguard.com
 microsoftadc.com
-microsoftads.com
 microsoftadvertising.com
 microsoftadvertisingregionalawards.com
 microsoftaffiliates.com
@@ -15508,7 +15513,6 @@ ms-studiosmedia.com
 ms365surfaceoffer.com
 ms4dre.com
 msa-it.org
-msads.net
 msauth.net
 mschallenge2018.com
 msdn.com
@@ -15900,6 +15904,7 @@ namethatporn.com
 namethatpornad.com
 namgyal.org
 namgyalmonastery.org
+namu.wiki
 nan-net.com
 nanopool.org
 nantobank.co.jp
@@ -16879,6 +16884,7 @@ offresspecialesbmw.ca
 offrezdesipods.com
 offworldindustries.com
 offworldindustries.net
+ofiii.com
 ofile.org
 ogakikyoritsu.co.jp
 ogameblog.com
@@ -17138,6 +17144,7 @@ origin.com
 origin.tv
 originalhulu.com
 originalindianporn.com
+originlab.com
 orithegame.com
 orl.ly
 orlandohurricane.com
@@ -17231,6 +17238,7 @@ oxlife.co
 oyax.com
 oyeloca.com
 oyghan.com
+oystermercury.top
 ozchinese.com
 ozeex.com
 ozodi.org
@@ -17716,6 +17724,7 @@ picnik.com
 picpost.com
 pics.ee
 pics.vc
+picsart.com
 picsee.co
 picsee.pro
 pictoa.com
@@ -18895,12 +18904,15 @@ rbeopp.com
 rbeuroinfo.com
 rbgrads.com
 rbgraduates.com
+rblx.org
 rbmavericks.com
 rbnainternational.com
 rbplc.com
 rbrandlibrary.com
 rbsgr.com
 rbspeakup.com
+rbx.com
+rbxcdn.com
 rcinet.ca
 rcl07.xyz
 rclon.com
@@ -19172,6 +19184,9 @@ rmjdw.com
 ro89.com
 road-crew.com
 roadshow.hk
+roblox-api.arkoselabs.co
+roblox.com
+robloxlabs.com
 robobat.com
 roboforex.com
 roboform.com
@@ -19621,6 +19636,7 @@ sensorynetworks.com
 sensualgirls.org
 sensualmothers.com
 sensueel.net
+sentry-cdn.com
 sentry.io
 senzuritv.net
 seqing.one
@@ -20029,7 +20045,6 @@ shotgunvfx.com
 shotwithgeforce.com
 showhaotu.com
 shownote.com
-showtime
 showtime.com
 showtime.jp
 showtimeanytime.com
@@ -21520,7 +21535,6 @@ thegioitinhoc.vn
 thegithubshop.com
 thegly.com
 thegooglestore.com
-theguardian
 theguardian.com
 theguardiandns.com
 thehabibshow.com
@@ -23783,6 +23797,8 @@ websitepulse.com
 webtoons.com
 webtoonscorp.com
 webtype.com
+webvisor.com
+webvisor.org
 webwarper.net
 webworkerdaily.com
 wechatlawsuit.com
@@ -24777,6 +24793,7 @@ ya.ru
 yaddal.tv
 yadi.sk
 yadori.club
+yads.tech
 yaeby.info
 yaeby.pro
 yahoo
@@ -24950,6 +24967,7 @@ yande.re
 yandex
 yandex-bank.net
 yandex-images.clstorage.net
+yandex-team.ru
 yandex.aero
 yandex.az
 yandex.by
@@ -24980,11 +24998,13 @@ yandex.st
 yandex.sx
 yandex.tj
 yandex.tm
+yandex.tr
 yandex.ua
 yandex.uz
 yandexadexchange.net
 yandexcloud.net
 yandexcom.net
+yandexmetrica.com
 yandexwebcache.org
 yanghengjun.com
 yangzhi.org
@@ -25000,6 +25020,7 @@ yarininsuyu.com
 yarnpkg.com
 yasarang.net
 yasni.co.uk
+yastat.net
 yastatic.net
 yasukuni.or.jp
 yavtube.com
@@ -25683,6 +25704,7 @@ full:d1k2us671qcoau.cloudfront.net
 full:d1m7jfoe9zdc1j.cloudfront.net
 full:d1mhjrowxxagfy.cloudfront.net
 full:d1oca24q5dwo6d.cloudfront.net
+full:d1unuk07s6td74.cloudfront.net
 full:d1v5ir2lpwr8os.cloudfront.net
 full:d1w2poirtb3as9.cloudfront.net
 full:d1xhnb4ptk05mw.cloudfront.net
@@ -25836,6 +25858,8 @@ full:notary-submissions-prod.s3-accelerate.amazonaws.com
 full:notary-submissions-prod.s3.us-west-2.amazonaws.com
 full:notify.ppy.sh
 full:np-edge.itunes.apple.com
+full:ntdofifreepc-tgc.cdn.hinet.net
+full:ntdofifreevcpc-tgc.cdn.hinet.net
 full:ntp-b.nist.gov
 full:ntp-c.colorado.edu
 full:ntp-d.nist.gov
@@ -25887,6 +25911,9 @@ full:push-apple.com.akadns.net
 full:pvr-hamivideo.cdn.hinet.net
 full:qualcomm.sc.omtrdc.net
 full:rink.hockeyapp.net
+full:roblox-load-generator-configuration.s3.us-east-2.amazonaws.com
+full:roblox-poc.global.ssl.fastly.net
+full:robloxcorp.s.llnwi.net
 full:rss.4040940.xyz
 full:rss.datuan.dev
 full:rss.littlebaby.life
