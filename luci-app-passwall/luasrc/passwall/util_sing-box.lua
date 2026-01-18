@@ -64,11 +64,12 @@ end
 local new_port
 
 local function get_new_port()
-	if new_port then
-		new_port = tonumber(sys.exec(string.format("echo -n $(/usr/share/%s/app.sh get_new_port %s tcp)", appname, new_port + 1)))
-	else
-		new_port = tonumber(sys.exec(string.format("echo -n $(/usr/share/%s/app.sh get_new_port auto tcp)", appname)))
+	local cmd_format = ". /usr/share/passwall/utils.sh ; echo -n $(get_new_port %s tcp)"
+	local set_port = 0
+	if new_port and tonumber(new_port) then
+		set_port = tonumber(new_port) + 1
 	end
+	new_port = tonumber(sys.exec(string.format(cmd_format, set_port == 0 and "auto" or set_port)))
 	return new_port
 end
 
@@ -516,8 +517,7 @@ end
 
 function gen_config_server(node)
 	local outbounds = {
-		{ type = "direct", tag = "direct" },
-		{ type = "block", tag = "block" }
+		{ type = "direct", tag = "direct" }
 	}
 
 	local tls = {
@@ -822,8 +822,10 @@ function gen_config_server(node)
 	local route = {
 		rules = {
 			{
-				ip_cidr = { "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16" },
-				outbound = (node.accept_lan == nil or node.accept_lan == "0") and "block" or "direct"
+				ip_is_private = true,
+				action = node.accept_lan == "1" and "route" or "reject",
+				outbound = node.accept_lan == "1" and "direct" or nil
+
 			}
 		}
 	}
@@ -874,26 +876,6 @@ function gen_config_server(node)
 		for k, v in pairs(config.outbounds[index]) do
 			if k:find("_") == 1 then
 				config.outbounds[index][k] = nil
-			end
-		end
-	end
-
-	if version_ge_1_11_0 then
-		-- Migrate logics
-		-- https://sing-box.sagernet.org/migration/
-		for i = #config.outbounds, 1, -1 do
-			local value = config.outbounds[i]
-			if value.type == "block" then
-				-- https://sing-box.sagernet.org/migration/#migrate-legacy-special-outbounds-to-rule-actions
-				table.remove(config.outbounds, i)
-			end
-		end
-		-- https://sing-box.sagernet.org/migration/#migrate-legacy-special-outbounds-to-rule-actions
-		for i = #config.route.rules, 1, -1 do
-			local value = config.route.rules[i]
-			if value.outbound == "block" then
-				value.action = "reject"
-				value.outbound = nil
 			end
 		end
 	end
