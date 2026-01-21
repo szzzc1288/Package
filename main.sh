@@ -21,9 +21,9 @@ git clone --depth 1 https://github.com/AlexZhuo/luci-app-bandwidthd
 git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus 
 # git clone --depth 1 https://github.com/sirpdboy/netspeedtest && mvdir netspeedtest
 git clone --depth 1 https://github.com/vernesong/OpenClash && mvdir OpenClash
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages && mvdir openwrt-passwall-packages
+git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall && mvdir openwrt-passwall-packages
 # git clone --depth 1 -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
+git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-opentopd
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
