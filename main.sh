@@ -29,6 +29,7 @@ git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
 git clone --depth 1 https://github.com/pymumu/luci-app-smartdns
+git clone --depth 1 https://github.com/pymumu/openwrt-smartdns smartdns
 # git clone --depth 1 https://github.com/cyzzc/luci-app-vssr
 # git clone --depth 1 https://github.com/jerrykuku/lua-maxminddb
 # git clone --depth 1 https://github.com/QiuSimons/openwrt-mos && mv -n openwrt-mos/*mosdns ./ && mv -n openwrt-mos/dat ./ ; rm -rf openwrt-mos
@@ -39,7 +40,6 @@ git clone --depth 1 https://github.com/fw876/helloworld && mv -n helloworld/{luc
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packages/luci-app-bypass kwrt-packages/luci-app-fileassistant ./ ; rm -rf kwrt-packages
 #svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
-wget https://github.com/pymumu/smartdns/archive/refs/heads/master.tar.gz && tar zxvf master.tar.gz && mv smartdns-master/package/openwrt smartdns  && rm -rf smartdns-master
 
 
 git clone --depth 1 --filter=blob:none --sparse https://github.com/kenzok8/small-package.git small-package
