@@ -6,18 +6,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=smartdns
-PKG_VERSION:=1.2025.46.2
-PKG_RELEASE:=3
+PKG_VERSION:=1.2025.47
+PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://www.github.com/pymumu/smartdns.git
-PKG_SOURCE_VERSION:=64fc9f20fba0e14cb118fe7f145557971cafd858
-PKG_MIRROR_HASH:=skip
+PKG_MIRROR_HASH:=609fec024396a3a26278ef9fe7bd49aeca478e3163fc53c699a5f402fa0320f0
+PKG_SOURCE_VERSION:=e9bdf78b96a33fd4224c5027f3fd61c9528c3904
 
 SMARTDNS_WEBUI_VERSION:=1.0.0
-SMAETDNS_WEBUI_SOURCE_PROTO:=git
+SMARTDNS_WEBUI_SOURCE_PROTO:=git
 SMARTDNS_WEBUI_SOURCE_URL:=https://github.com/pymumu/smartdns-webui.git
-SMARTDNS_WEBUI_SOURCE_VERSION:=35cbf4a1940f5dd32670c69bd5cc02437ad073e7
+SMARTDNS_WEBUI_SOURCE_VERSION:=3261c18b1b93d841e86d9e727557109ae71d71cd
 SMARTDNS_WEBUI_FILE:=smartdns-webui-$(SMARTDNS_WEBUI_VERSION).tar.gz
 
 PKG_MAINTAINER:=Nick Peng <pymumu@gmail.com>
@@ -108,14 +108,15 @@ define Build/Compile/smartdns-ui
 	CARGO_BUILD_ARGS="$(if $(strip $(RUST_PKG_FEATURES)),--features "$(strip $(RUST_PKG_FEATURES))") --profile $(CARGO_PKG_PROFILE)"
 	+$(CARGO_PKG_VARS) CARGO_BUILD_ARGS="$(CARGO_BUILD_ARGS)" CC=$(TARGET_CC) \
 	PATH="$$(PATH):$(CARGO_HOME)/bin" \
+	AWS_LC_SYS_CFLAGS="-O0" \
 	make -C $(PKG_BUILD_DIR)/plugin/smartdns-ui
 endef
 
 define Download/smartdns-webui
 	FILE:=$(SMARTDNS_WEBUI_FILE)
-	PROTO:=$(SMAETDNS_WEBUI_SOURCE_PROTO)
+	PROTO:=$(SMARTDNS_WEBUI_SOURCE_PROTO)
 	URL:=$(SMARTDNS_WEBUI_SOURCE_URL)
-	MIRROR_HASH:=b3f4f73b746ee169708f6504c52b33d9bbeb7c269b731bd7de4f61d0ad212d74
+	MIRROR_HASH:=227eef2dfffb56445145e7b8a76f6d6fa678ce3e99aceec58f7d35564f4cfafd
 	VERSION:=$(SMARTDNS_WEBUI_SOURCE_VERSION)
 	HASH:=$(SMARTDNS_WEBUI_HASH)
 	SUBDIR:=smartdns-webui
@@ -140,4 +141,3 @@ endef
 $(eval $(call BuildPackage,smartdns))
 $(eval $(call RustBinPackage,smartdns-ui))
 $(eval $(call BuildPackage,smartdns-ui))
-
