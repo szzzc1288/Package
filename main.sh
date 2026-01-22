@@ -28,7 +28,7 @@ git clone --depth 1 https://github.com/sirpdboy/luci-theme-opentopd
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
-git clone --depth 1 https://github.com/pymumu/luci-app-smartdns
+git clone --depth 1 -b lede https://github.com/pymumu/luci-app-smartdns
 git clone --depth 1 https://github.com/pymumu/openwrt-smartdns smartdns
 # git clone --depth 1 https://github.com/cyzzc/luci-app-vssr
 # git clone --depth 1 https://github.com/jerrykuku/lua-maxminddb
