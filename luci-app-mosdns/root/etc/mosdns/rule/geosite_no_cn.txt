@@ -2874,6 +2874,7 @@ bbc.com
 bbc.in
 bbc.mp-pxcdn.com
 bbc.net.uk
+bbc.pdn.tritondigital.com
 bbcchinese.com
 bbchat.tv
 bbci.co.uk
@@ -3574,6 +3575,7 @@ bitsquare.io
 bitstamp.net
 bitstream.com
 bitterwinter.org
+bittorrent.com
 bittrex.com
 bitvise.com
 bitwarden.com
@@ -4468,6 +4470,7 @@ brutalfetish.com
 brutaltgp.com
 bs-adreview.com
 bs-awh.ne.jp
+bsappapi.com
 bsi.ir
 bsky.app
 bsky.network
@@ -10388,6 +10391,7 @@ greginhollywood.com
 gridaware.app
 grindr.com
 grok.com
+grokipedia.com
 grooby.com
 groq.com
 ground.news
@@ -10728,6 +10732,7 @@ hellven.net
 helpeachpeople.com
 helpster.de
 helpzhuling.org
+hembed.com
 hentai-ani.me
 hentai-archive.com
 hentai-books.com
@@ -14067,6 +14072,7 @@ lostbetsgames.com
 lotcrap.com
 lotsawahouse.org
 lotuslight.org.tw
+louisvuitton.com
 lovart.ai
 love-sextoys.co.uk
 love4porn.com
@@ -14375,6 +14381,8 @@ manta.com
 mantan-web.jp
 mantochichi.com
 manurefetish.com
+manus.im
+manuscdn.com
 manytoon.com
 manyvids.com
 manyvoices.news
@@ -17292,6 +17300,7 @@ osfoora.com
 osiri-suki-club.com
 osl.com
 osm.org
+osmand.net
 osmfoundation.org
 ospray.net
 ospray.org
@@ -17975,6 +17984,7 @@ pixtronix.com
 pjbyj.top
 pjful-app.lol
 pjgirls.com
+pjsekai.sega.jp
 pk.com
 pki-post.ch
 pki-posta.ch
@@ -18950,6 +18960,7 @@ radeon.com
 radgametools.com
 radian6.com
 radicalparty.org
+radiko-cf.com
 radiko.jp
 radio-canada.ca
 radio-en-ligne.fr
@@ -19536,6 +19547,7 @@ sale-nikeshoes.com
 salebeatslasteststyle4you.com
 saleblackfridaydrebeats.com
 salecheaphandbags.com
+salesforce-setup.com
 salesforce.com
 salesforce.org
 salesforceiq.com
@@ -19780,6 +19792,7 @@ seesmic.com
 seeurlpcl.com
 seevpn.com
 seezone.net
+sef.org.tw
 sego8.cc
 sego8.co
 sego8.xyz
@@ -20366,6 +20379,7 @@ sketchbookmobile.com
 sketchbooknews.com
 sketchbookpro.com
 sketchfab.com
+skills.sh
 skillshare.com
 skimtube.com
 skinstrip.net
@@ -20458,6 +20472,7 @@ smartoneholdings.com
 smartonerobotics.com
 smartonesolutions.com.hk
 smartonesolutions.hk
+smartstream.ne.jp
 smashed.xxx
 smbc.co.jp
 smbctb.co.jp
@@ -21379,6 +21394,7 @@ tahr.org.tw
 taiav.com
 tail-f.com
 tailf.com
+tails.net
 tailscale.com
 tailscale.io
 tailwindtraders.com
@@ -22869,6 +22885,7 @@ v-av.com
 v-has.com
 v.gd
 v2.help
+v2.hysteria.network
 v2ex.com
 v2fly.org
 v2ph.com
@@ -26128,6 +26145,7 @@ full:origin-a.akamaihd.net
 full:osu.ppy.sh
 full:p-events-delivery.akamaized.net
 full:p16-tiktokcdn-com.akamaized.net
+full:packages.microsoft.com
 full:paper-attachments.s3.amazonaws.com
 full:pchomeonline.com.tw
 full:pki.google.com
