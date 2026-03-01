@@ -1,6 +1,6 @@
 module("luci.passwall.api", package.seeall)
 local com = require "luci.passwall.com"
-bin = require "nixio".bin
+nixio = require "nixio"
 fs = require "nixio.fs"
 sys = require "luci.sys"
 uci = require "luci.model.uci".cursor()
@@ -131,8 +131,8 @@ function base64Decode(text)
 end
 
 function base64Encode(text)
-	local result = nixio.bin.b64encode(text)
-	return result
+	if not text then return nil end
+	return nixio.bin.b64encode(text)
 end
 
 function UrlEncode(szText)
@@ -1488,4 +1488,19 @@ function match_node_rule(name, rule)
 		end
 	end
 	return true
+end
+
+function get_core(field, candidates)
+	local v = uci:get(appname, "@global_subscribe[0]", field)
+	if v and v ~= "" then
+		for _, c in ipairs(candidates) do
+			if c[2] == v and c[1] then
+				return v
+			end
+		end
+	end
+	for _, c in ipairs(candidates) do
+		if c[1] then return c[2] end
+	end
+	return nil
 end

@@ -10,6 +10,9 @@ msgstr "运行中"
 msgid "NOT RUNNING"
 msgstr "未运行"
 
+msgid "UNINSTALLED"
+msgstr "未安装"
+
 msgid "Working..."
 msgstr "连接正常"
 
@@ -492,6 +495,9 @@ msgstr ""
 "示例：<code>^A && B && !C && D$</code><br>"
 "表示节点备注需同时满足：以 A 开头（^）、包含 B、不包含 C（!）、并以 D 结尾（$）。<br>"
 "多个条件使用 <code>&&</code> 连接，条件顺序不影响结果。"
+
+msgid "Keep the match scope small. Too many nodes can impact router performance."
+msgstr "建议尽量缩小匹配范围，节点过多会增加路由器负载。"
 
 msgid "Balancing Strategy"
 msgstr "负载均衡策略"
@@ -1396,12 +1402,6 @@ msgstr "插件名称"
 msgid "Plugin Arguments"
 msgstr "插件参数"
 
-msgid "Naiveproxy Protocol"
-msgstr "Naiveproxy 协议"
-
-msgid "V2ray Protocol"
-msgstr "V2ray 协议"
-
 msgid "User Level"
 msgstr "用户等级(level)"
 
@@ -1836,6 +1836,9 @@ msgstr "控制使用 DNS 查询 ECH 配置时的策略。"
 
 msgid "Enable Multipath TCP, need to be enabled in both server and client configuration."
 msgstr "启用 Multipath TCP，需在服务端和客户端配置中同时启用。"
+
+msgid "An FinalMaskObject in JSON format, used for sharing."
+msgstr "JSON 格式的 FinalMaskObject，用来实现分享。"
 
 msgid "Fragment"
 msgstr "分片"
