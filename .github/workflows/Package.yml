@@ -43,53 +43,37 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x ${{matrix.target}}.sh
-        
-        # 全新开始：删除重建
+
+        # 删掉旧的 Package 仓库，保证每次都是全新的
         rm -rf ${{matrix.target}}
         git clone -b ${{matrix.target}} https://github.com/szzzc1288/Package.git ${{matrix.target}}
         cd ${{matrix.target}}
-        
-        # 干净创建 diy 目录
+
+        # 删掉旧 diy，重新创建一个干净目录
         rm -rf diy
         mkdir -p diy
         cd diy
-        
-        # 在干净目录运行 main.sh
-        $GITHUB_WORKSPACE/${{matrix.target}}.sh
-        
-        # 返回根目录
-        cd $GITHUB_WORKSPACE/${{matrix.target}}
 
-    - name: Clean Nested Git
-      run: |
+        # 在干净的 diy 目录里执行 main.sh，只负责拉最新包
+        $GITHUB_WORKSPACE/${{matrix.target}}.sh
+
+        # 回到 Package 根目录准备提交
         cd $GITHUB_WORKSPACE/${{matrix.target}}
-        # 只清理 diy 中的残留 Git 文件
-        find diy -type d -name ".git" -exec rm -rf {} + 2>/dev/null || true
-        find diy -name ".gitignore" -delete 2>/dev/null || true
-        find diy -name ".gitmodules" -delete 2>/dev/null || true
-        find diy -name ".gitattributes" -delete 2>/dev/null || true
 
     - name: Upload Package
       env: 
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/${{matrix.target}}
-        [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
         cd $GITHUB_WORKSPACE/${{matrix.target}}
-        
-        # 终极清理：删除所有 .git + 移除 Git 索引记录
-        find . -type d -name ".git" -exec rm -rf {} + 2>/dev/null || true
-        find . -name ".git*" -delete 2>/dev/null || true
-        
-        # 移除所有嵌套仓库的 Git 索引记录（解决箭头）
-        git rm -r --cached . -r --ignore-unmatch 2>/dev/null || true
-        git add . --renormalize
-        
-        # 禁用警告 + 强制 commit
-        git config advice.updateSparsePath false
+
+        # 把根仓库里的 LICENSE / README 覆盖到 Package 仓库
+        [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE .
+        [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md .
+
+        # 简单粗暴：全部 add + commit + push，忽略可能的空提交错误
+        git add .
         git commit -am "update $(date +'%Y-%m-%d %H:%M:%S')" || true
         git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{matrix.target}} || true
-
 
     - name: Send Telegram Notification
       if: success()
