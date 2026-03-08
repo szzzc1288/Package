@@ -42,12 +42,12 @@ git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packa
 #svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
 
 
-# git clone --depth 1 --filter=blob:none --sparse https://github.com/kenzok8/small-package.git small-package
-# cd small-package
-# git sparse-checkout set pdnsd-alt
-# mv -n pdnsd-alt ../
-# cd ..
-# rm -rf small-package
+git clone --depth 1 --filter=blob:none --sparse https://github.com/kenzok8/small-package.git small-package
+cd small-package
+git sparse-checkout set pdnsd-alt
+mv -n pdnsd-alt ../
+cd ..
+rm -rf small-package
 
 # git_sparse_clone master "https://github.com/immortalwrt/packages" "immpack" net/sub-web \
 # net/smartdns net/dnsproxy net/haproxy net/v2raya net/cdnspeedtest \
