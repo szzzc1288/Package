@@ -264,8 +264,7 @@ do
 
 			for k, e in pairs(rules) do
 				local _node_id = node[e[".name"]] or nil
-				if _node_id and api.parseURL(_node_id) then
-				else
+				if _node_id and not _node_id:find("Socks_") then
 					CONFIG[#CONFIG + 1] = {
 						log = false,
 						currentNode = _node_id and uci:get_all(appname, _node_id) or nil,
@@ -1579,7 +1578,7 @@ end
 local function curl(url, file, ua, mode)
 	if not url or url == "" then return 404 end
 	local curl_args = {
-		"-skL", "-w %{http_code}", "--retry 3", "--connect-timeout 3"
+		"-skL", "-w %{http_code}", "--retry 3", "--connect-timeout 3", "-H 'Accept-Encoding: identity'"
 	}
 	if ua and ua ~= "" and ua ~= "curl" then
 		ua = (ua == "passwall") and ("passwall/" .. api.get_version()) or ua

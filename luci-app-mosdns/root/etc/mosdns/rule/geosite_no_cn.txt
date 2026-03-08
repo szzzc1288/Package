@@ -2189,6 +2189,7 @@ arctosia.com
 area120.com
 area51.to
 areca-backup.org
+arena.ai
 arena.taipei
 arethusa.su
 arewereadyyet.com
@@ -2220,6 +2221,7 @@ artstationmedia.com
 artstor.org
 artstorm.com
 arvanstorage.ir
+arweave.org
 arxiv.org
 arzon.jp
 as-hp.ca
@@ -6351,6 +6353,7 @@ dhlestudio.com.co
 diablo3.com
 diabloimmortal.com
 diabrowser.com
+diabrowser.engineering
 dialga.com
 dialogflow.com
 diamantewebcam.com
@@ -6609,6 +6612,7 @@ dkrecttv.com
 dl-iphone.com
 dl-laby.jp
 dl.box.net
+dlaf.jp
 dlap001.xyz
 dlap301.com
 dldlinks.com
@@ -6763,6 +6767,7 @@ dowjones.io
 dowjoneson.com
 download.aircrack-ng.org
 download.com
+download.dappcdn.com
 download.qatp1.net
 downloadpass.com
 downloadsforipod.com
@@ -11455,9 +11460,8 @@ ilife.eu
 ilife.gr
 ilife.wang
 illawarramercury.com.au
+illgames.jp
 illianacomputerrecycling.com
-illusion.co.jp
-illusion.jp
 illusion111.com
 illusionas.com
 illusionchn.com
@@ -11951,6 +11955,7 @@ inventor-certified.com
 inventorfusion.com
 inventorseries.com
 inventorship.com.au
+investing.com
 investorschronicle.co.uk
 invidio.us
 invity.io
@@ -12254,6 +12259,7 @@ jamyangnorbu.com
 jan.ai
 janor6.net
 japan-forward.com
+japan-illgames.com
 japan-whores.com
 japan18tube.com
 japanbeast.com
@@ -12287,6 +12293,7 @@ jav.guru
 jav.la
 jav.land
 jav.place
+jav.sb
 jav.si
 jav.wine
 jav01.cc
@@ -12360,6 +12367,7 @@ javhdporn.net
 javher.com
 javheroine.com
 javhihi.com
+javhub.com
 javhub.me
 javhub.net
 javhuge.com
@@ -12395,6 +12403,7 @@ javprime.net
 javpub.me
 javpush.com
 javqd.com
+javquick.com
 javrank.com
 javrate.com
 javrave.club
@@ -12460,6 +12469,7 @@ jerkofftocelebs.com
 jessicaturner.co.uk
 jessicaturner.com
 jetbrains.ai
+jetbrains.cloud
 jetbrains.com
 jetbrains.net
 jetbrains.space
@@ -15021,6 +15031,7 @@ musickit.net
 musixmatch.com
 mut.ch
 muthead.com
+muvluv-girls-garden.com
 muycerdas.xxx
 muyzorras.com
 muzi.com
@@ -16331,6 +16342,7 @@ only3x.com
 onlyams.com
 onlycartoonsex.com
 onlydudes.com
+onlyfans.com
 onlyfanspw.com
 onlyfreelatinaporn.com
 onlygayvideo.com
@@ -17166,6 +17178,10 @@ pleasefuck.org
 pleasurebabe.com
 pleasuregirl.net
 pleasuremore.com
+plex.com
+plex.services
+plex.tv
+plexapp.com
 plexvpn.pro
 plos.org
 plug-into.com
@@ -18847,6 +18863,7 @@ selfloversworld.com
 sellercommunity.com
 semanticscholar.org
 sena.co.kr
+sendvid.com
 seneporno.com
 seniortgp.com
 senpaiheat.com
@@ -21184,6 +21201,7 @@ tsundora.com
 tsuradou.noonvob.com
 tsyum.com
 tt1069.com
+ttcdn-us.com
 tteshop.com
 ttlivecdn.com
 ttoverseaus.net
@@ -21591,6 +21609,7 @@ ustibetcommittee.org
 ustream.tv
 usvimosquito.com
 usvimosquitoproject.com
+utdstc.com
 utopianpal.com
 uug22.com
 uug23.com
@@ -22954,6 +22973,7 @@ wisekey.com
 wisekey.com.hk
 wisevid.com
 wish.com
+wispbyte.com
 wistia.com
 wistia.net
 withgoogle.com
@@ -23992,6 +24012,8 @@ youflix.is
 youjism.com
 youjizz.com
 youjizz.sex
+youla.io
+youla.ru
 youlucky.com
 youmaker.com
 youmind.ai
@@ -24524,6 +24546,7 @@ full:antigravity.googleapis.com
 full:aod-pod-uk-live.akamaized.net
 full:api-p.videomarket.jp
 full:api.viu.now.com
+full:apkmirror.disqus.com
 full:apl-hamivideo.cdn.hinet.net
 full:apple-tv-plus-press.apple.com
 full:apple.com.akadns.net
@@ -24912,6 +24935,8 @@ full:spotify.com.edgesuite.net
 full:spotify.map.fastly.net
 full:spotify.map.fastlylb.net
 full:ssl-lvlt.cdn.ea.com
+full:st-ok-pts.cdn-vk.ru
+full:st-ok.cdn-vk.ru
 full:standchartbank.sc.omtrdc.net
 full:standchartbank.tt.omtrdc.net
 full:static-hamivideo.cdn.hinet.net
@@ -25137,6 +25162,7 @@ full:wwis-dubc1-vip99.adobe.com
 full:www-cdn.icloud.com.akadns.net
 full:yandex-pogoda.static-storage.net
 full:yangzhi.app
+full:youla-web-static.mrgcdn.ru
 full:yt3.googleusercontent.com
 full:zeenews-fonts.s3.amazonaws.com
 regexp:(^|\.)13mei[5-7]\.buzz$
