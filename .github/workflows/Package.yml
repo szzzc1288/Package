@@ -40,7 +40,7 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         sudo timedatectl set-timezone "Asia/Shanghai"
-        
+
     # 3️⃣ Clone Package 仓库并清理旧文件
     - name: Clone packages
       run: |
@@ -49,12 +49,12 @@ jobs:
         git clone -b ${{matrix.target}} https://github.com/szzzc1288/Package.git ${{matrix.target}}
         cd ${{matrix.target}}
 
-        # 关闭 sparse checkout 并允许操作所有文件
-        git sparse-checkout disable || true
-        git rm -r --cached --sparse . >/dev/null 2>&1 || true
+        # ✅ 最稳方式：彻底重置仓库，避免 sparse checkout 报错
+        git reset --hard
+        git clean -fdx
 
-        # 删除除 diy 外的所有目录
-        find . -mindepth 1 -maxdepth 1 ! -name diy -exec rm -rf {} + >/dev/null 2>&1
+        # 删除除 diy 外的文件夹
+        find . -mindepth 1 -maxdepth 1 ! -name diy -exec rm -rf {} +
 
         # 执行你的脚本
         $GITHUB_WORKSPACE/${{matrix.target}}.sh
