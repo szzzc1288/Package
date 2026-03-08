@@ -1,0 +1,98 @@
+name: Package
+
+on:
+  push:
+    paths:
+      - '.github/workflows/Package.yml'
+      - 'diy/**'
+  workflow_dispatch:
+  schedule:
+    - cron: 10 02 * * 0
+  watch:
+    types: started
+  repository_dispatch:
+
+env:
+  TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    name: Update ${{matrix.target}}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [main]
+
+    steps:
+    # 1️⃣ Checkout 仓库
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # 2️⃣ 初始化环境
+    - name: Initialization environment
+      run: |
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        sudo timedatectl set-timezone "Asia/Shanghai"
+        
+    # 3️⃣ Clone Package 仓库并清理旧文件
+    - name: Clone packages
+      run: |
+        cd $GITHUB_WORKSPACE
+        chmod +x ${{matrix.target}}.sh
+        git clone -b ${{matrix.target}} https://github.com/szzzc1288/Package.git ${{matrix.target}}
+        cd ${{matrix.target}}
+
+        # 关闭 sparse checkout 并允许操作所有文件
+        git sparse-checkout disable || true
+        git rm -r --cached --sparse . >/dev/null 2>&1 || true
+
+        # 删除除 diy 外的所有目录
+        find . -mindepth 1 -maxdepth 1 ! -name diy -exec rm -rf {} + >/dev/null 2>&1
+
+        # 执行你的脚本
+        $GITHUB_WORKSPACE/${{matrix.target}}.sh
+
+    # 4️⃣ 上传更新到仓库
+    - name: Upload Package
+      env: 
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: |
+        [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/${{matrix.target}}
+        [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
+        cd $GITHUB_WORKSPACE/${{matrix.target}}
+        git add .
+        git commit -am "update $(date +'%Y-%m-%d %H:%M:%S')" || true
+        git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{matrix.target}}
+
+    # 5️⃣ Telegram 成功通知
+    - name: Send Telegram Notification
+      if: success()
+      run: |
+        curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage \
+          -d chat_id=${TELEGRAM_CHAT_ID} \
+          -d parse_mode="Markdown" \
+          -d text="✅ *Package 更新成功* %0A*仓库:* [szzzc1288/Package](https://github.com/szzzc1288/Package) %0A*触发者:* ${{ github.actor }} %0A*时间:* $(date +'%Y-%m-%d %H:%M:%S')"
+
+    # 6️⃣ Telegram 失败通知
+    - name: Send Telegram Notification (on failure)
+      if: failure()
+      run: |
+        curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage \
+          -d chat_id=${TELEGRAM_CHAT_ID} \
+          -d parse_mode="Markdown" \
+          -d "text=❌ *Package 更新失败* %0A$(date +'%Y-%m-%d %H:%M:%S')"
+             
+    # 7️⃣ 删除旧 workflow runs
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        retain_days: 0
+        keep_minimum_runs: 4
+        TOKEN: ${{ secrets.ACCESS_TOKEN }}
