@@ -77,9 +77,16 @@ jobs:
         [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
         cd $GITHUB_WORKSPACE/${{matrix.target}}
         
-        # 忽略所有 Git 警告，强制 commit
-        git config advice.updateSparsePath false  # 永久禁用提示
+        # 终极清理：删除所有 .git + 移除 Git 索引记录
+        find . -type d -name ".git" -exec rm -rf {} + 2>/dev/null || true
+        find . -name ".git*" -delete 2>/dev/null || true
+        
+        # 移除所有嵌套仓库的 Git 索引记录（解决箭头）
+        git rm -r --cached . -r --ignore-unmatch 2>/dev/null || true
         git add . --renormalize
+        
+        # 禁用警告 + 强制 commit
+        git config advice.updateSparsePath false
         git commit -am "update $(date +'%Y-%m-%d %H:%M:%S')" || true
         git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{matrix.target}} || true
 
