@@ -45,9 +45,22 @@ jobs:
         chmod +x ${{matrix.target}}.sh
         git clone -b ${{matrix.target}} https://github.com/szzzc1288/Package.git ${{matrix.target}}
         cd ${{matrix.target}}
-        git rm -r --cache * --sparse >/dev/null 2>&1
+        git sparse-checkout disable || true
+        git rm -r --cache * >/dev/null 2>&1
         rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
         $GITHUB_WORKSPACE/${{matrix.target}}.sh
+
+    - name: Clean Nested Git  # 新增完整步骤：清理箭头图标源头
+      run: |
+        cd $GITHUB_WORKSPACE/${{matrix.target}}
+        # 递归删除所有 .git 和 Git 配置
+        find . -type d -name ".git" -exec rm -rf {} + 2>/dev/null || true
+        find . -name ".gitignore" -delete 2>/dev/null || true
+        find . -name ".gitmodules" -delete 2>/dev/null || true
+        find . -name ".gitattributes" -delete 2>/dev/null || true
+        # 清理 Git 索引中的嵌套仓库记录
+        git rm -r --cached . 2>/dev/null || true
+        git add .
 
     - name: Upload Package
       env: 
@@ -56,8 +69,8 @@ jobs:
         [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/${{matrix.target}}
         [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
         cd $GITHUB_WORKSPACE/${{matrix.target}}
-        git add . --sparse
-        git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)" --sparse || true
+        git add .
+        git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)" || true
         git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{matrix.target}}
 
     # 🆕 新增步骤：Telegram 成功通知
