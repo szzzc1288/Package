@@ -1,0 +1,95 @@
+name: Package
+
+on:
+  push:
+    paths:
+      - '.github/workflows/Package.yml'
+      - 'diy/**'
+      - 'main.sh'
+  workflow_dispatch:
+  schedule:
+    - cron: '10 02 * * 0'
+  watch:
+    types: [started]
+  repository_dispatch:
+
+env:
+  TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    name: Update main
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Initialization environment
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          sudo timedatectl set-timezone "Asia/Shanghai"
+
+      - name: Move main to root
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          if [ -d main ]; then
+            shopt -s dotglob nullglob
+            mv main/* .
+            rmdir main || true
+          fi
+
+      - name: Run main.sh
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          chmod +x main.sh
+          bash "$GITHUB_WORKSPACE/main.sh"
+          echo "=== main.sh 执行完成 ==="
+
+      - name: Upload Package
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "ℹ️ 没有文件变化，跳过 commit"
+          else
+            git commit -m "update $(date +'%Y-%m-%d %H:%M:%S')"
+            git push --quiet "https://${ACCESS_TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
+            echo "✅ 已提交并推送更新"
+          fi
+
+      - name: Send Telegram Notification
+        if: success()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT_ID}" \
+            -d "parse_mode=Markdown" \
+            -d "text=✅ *Package 更新成功* %0A*仓库:* ${{ github.repository }} %0A*触发者:* ${{ github.actor }} %0A*时间:* $(date +'%Y-%m-%d %H:%M:%S')"
+
+      - name: Send Telegram Notification (on failure)
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            -d "chat_id=${TELEGRAM_CHAT_ID}" \
+            -d "parse_mode=Markdown" \
+            -d "text=❌ *Package 更新失败* %0A*仓库:* ${{ github.repository }} %0A*时间:* $(date +'%Y-%m-%d %H:%M:%S')"
+
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 4
