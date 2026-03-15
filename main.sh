@@ -16,19 +16,19 @@ function mvdir() {
 mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
-git clone --depth 1 https://github.com/AlexZhuo/luci-app-bandwidthd
-git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus
+git clone --depth 1 https://github.com/AlexZhuo/luci-app-bandwidthd && rm -rf luci-app-bandwidthd/.git
+git clone --depth 1 https://github.com/sirpdboy/luci-app-eqosplus && rm -rf luci-app-eqosplus/.git
 # git clone --depth 1 https://github.com/sirpdboy/netspeedtest && mvdir netspeedtest
 git clone --depth 1 https://github.com/vernesong/OpenClash && mvdir OpenClash
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages && mvdir openwrt-passwall-packages
 # git clone --depth 1 -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat.git && rm -rf luci-theme-kucat/.git
-git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
+git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff && rm -rf luci-app-poweroff/.git
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
-git clone --depth 1 -b lede https://github.com/pymumu/luci-app-smartdns
-git clone --depth 1 https://github.com/pymumu/openwrt-smartdns smartdns
+git clone --depth 1 -b lede https://github.com/pymumu/luci-app-smartdns && rm -rf luci-app-smartdns/.git
+git clone --depth 1 https://github.com/pymumu/openwrt-smartdns smartdns && rm -rf openwrt-smartdns/.git
 # git clone --depth 1 https://github.com/cyzzc/luci-app-vssr
 # git clone --depth 1 https://github.com/jerrykuku/lua-maxminddb
 # git clone --depth 1 https://github.com/QiuSimons/openwrt-mos && mv -n openwrt-mos/*mosdns ./ && mv -n openwrt-mos/dat ./ ; rm -rf openwrt-mos
@@ -36,7 +36,7 @@ git clone --depth 1 https://github.com/QiuSimons/openwrt-mos && mvdir openwrt-mo
 git clone --depth 1 https://github.com/cyzzc/openwrt_nezha && mvdir openwrt_nezha
 git clone --depth 1 https://github.com/fw876/helloworld && mv -n helloworld/{luci-app-ssr-plus,tuic-client,shadow-tls,redsocks2,lua-neturl,dns2tcp,v2ray-core,trojan,dns2socks-rust,gn} ./ ; rm -rf helloworld
 # git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat
-git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus
+git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus && rm -rf luci-app-advancedplus/.git
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packages/luci-app-bypass kwrt-packages/luci-app-fileassistant ./ ; rm -rf kwrt-packages
 #svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
 
