@@ -14,7 +14,6 @@ on:
   repository_dispatch:
 
 env:
-  TOKEN: ${{ secrets.ACCESS_TOKEN }}
   TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -22,7 +21,6 @@ env:
 jobs:
   check:
     runs-on: ubuntu-latest
-    name: Update main
     permissions:
       contents: write
       actions: write
@@ -39,29 +37,47 @@ jobs:
           git config --global user.name "github-actions[bot]"
           sudo timedatectl set-timezone "Asia/Shanghai"
 
-      - name: Move package dirs from main to root
+      - name: Prepare build workspace
         run: |
-          cd "$GITHUB_WORKSPACE"
-          if [ -d main ]; then
-            find main -mindepth 1 -maxdepth 1 -type d -exec mv -t . {} +
-            find main -mindepth 1 -maxdepth 1 -type f -exec mv -t . {} +
-            rmdir main || true
-          fi
+          rm -rf /tmp/package_build
+          mkdir -p /tmp/package_build
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            "$GITHUB_WORKSPACE/" /tmp/package_build/
 
-      - name: Run main.sh
+      - name: Run main.sh in temp dir
         run: |
-          cd "$GITHUB_WORKSPACE"
+          cd /tmp/package_build
           chmod +x main.sh
-          bash "$GITHUB_WORKSPACE/main.sh"
+          bash ./main.sh
 
-      - name: Upload Package
+      - name: Sync result back to repo
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name '.github' \
+            ! -name 'main.sh' \
+            ! -name 'diy' \
+            -exec rm -rf {} +
+          rsync -a --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='main.sh' \
+            --exclude='diy' \
+            /tmp/package_build/ "$GITHUB_WORKSPACE/"
+
+      - name: Commit and push
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           cd "$GITHUB_WORKSPACE"
+          pwd
+          ls -la
+          git rev-parse --show-toplevel
           git status
           git add .
-
           if git diff --cached --quiet; then
             echo "ℹ️ 没有文件变化，跳过 commit"
           else
@@ -69,27 +85,3 @@ jobs:
             git push --quiet "https://${ACCESS_TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
             echo "✅ 已提交并推送更新"
           fi
-
-      - name: Send Telegram Notification
-        if: success()
-        run: |
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
-            -d "chat_id=${TELEGRAM_CHAT_ID}" \
-            -d "parse_mode=Markdown" \
-            -d "text=✅ *Package 更新成功* %0A*仓库:* ${{ github.repository }} %0A*触发者:* ${{ github.actor }} %0A*时间:* $(date +'%Y-%m-%d %H:%M:%S')"
-
-      - name: Send Telegram Notification (on failure)
-        if: failure()
-        run: |
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
-            -d "chat_id=${TELEGRAM_CHAT_ID}" \
-            -d "parse_mode=Markdown" \
-            -d "text=❌ *Package 更新失败* %0A*仓库:* ${{ github.repository }} %0A*时间:* $(date +'%Y-%m-%d %H:%M:%S')"
-
-      - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 0
-          keep_minimum_runs: 4
