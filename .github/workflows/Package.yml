@@ -16,6 +16,7 @@ env:
   TOKEN: ${{ secrets.ACCESS_TOKEN }}
   TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # 强制使用 Node 24，彻底解决弃用警告
 
 jobs:
   check:
@@ -44,14 +45,16 @@ jobs:
           chmod +x ${{ matrix.target }}.sh
           git clone -b ${{ matrix.target }} https://github.com/szzzc1288/Package.git ${{ matrix.target }}
           cd ${{ matrix.target }}
-          git rm -r --cache * >/dev/null 2>&1
-          rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
           
-          # 修复 sparse-checkout 错误（GitHub 2026 年必须加）
+          # === 提前彻底禁用 sparse-checkout（防止任何路径错误）===
           git sparse-checkout disable
           git config advice.updateSparsePath false
           
+          git rm -r --cache * >/dev/null 2>&1
+          rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
+          
           $GITHUB_WORKSPACE/${{ matrix.target }}.sh
+          echo "=== main.sh 执行完成 ==="
 
       - name: Upload Package
         env:
@@ -61,10 +64,17 @@ jobs:
           [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{ matrix.target }}
           cd $GITHUB_WORKSPACE/${{ matrix.target }}
           git add .
-          git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
-          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{ matrix.target }}
+          
+          # 🔥 关键修复：无变化也成功通过（不再 exit 1）
+          if git diff --cached --quiet; then
+            echo "ℹ️ 没有文件变化，跳过 commit"
+          else
+            git commit -am "update $(date +'%Y-%m-%d %H:%M:%S')"
+            git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{ matrix.target }}
+            echo "✅ 已提交并推送更新"
+          fi
 
-      # 🆕 Telegram 成功通知
+      # Telegram 成功通知
       - name: Send Telegram Notification
         if: success()
         run: |
@@ -73,7 +83,7 @@ jobs:
             -d parse_mode="Markdown" \
             -d text="✅ *Package 更新成功* %0A*仓库:* szzzc1288/Package %0A*触发者:* ${{ github.actor }} %0A*时间:* $(date +'%Y-%m-%d %H:%M:%S')"
 
-      # 🆕 Telegram 失败通知
+      # Telegram 失败通知
       - name: Send Telegram Notification (on failure)
         if: failure()
         run: |
@@ -82,11 +92,8 @@ jobs:
             -d parse_mode="Markdown" \
             -d text="❌ *Package 更新失败* %0A$(date +'%Y-%m-%d %H:%M:%S')"
 
-      # ⚠️ 注意：这个 action 仍在使用 Node 20
-      # GitHub 将于 2026年6月2日 强制切换到 Node 24
-      # 建议作者更新前，先加下面这行临时强制使用 Node 24（推荐）
       - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2.1.0
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           retain_days: 0
           keep_minimum_runs: 4
