@@ -6,6 +6,7 @@
 
 ```bash
 src-git zzcpackage https://github.com/szzzc1288/Package
+src-git zzcpackage https://github.com/szzzc1288/Package.git;main
 ```
 *  自用仓库，请别Fork,如果需要请前往 https://github.com/kenzok8/small-package 自行Fork。
 
