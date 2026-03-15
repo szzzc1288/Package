@@ -39,12 +39,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           sudo timedatectl set-timezone "Asia/Shanghai"
 
-      - name: Move main to root
+      - name: Move package dirs from main to root
         run: |
           cd "$GITHUB_WORKSPACE"
           if [ -d main ]; then
-            shopt -s dotglob nullglob
-            mv main/* .
+            find main -mindepth 1 -maxdepth 1 -type d -exec mv -t . {} +
+            find main -mindepth 1 -maxdepth 1 -type f -exec mv -t . {} +
             rmdir main || true
           fi
 
@@ -53,13 +53,13 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           chmod +x main.sh
           bash "$GITHUB_WORKSPACE/main.sh"
-          echo "=== main.sh 执行完成 ==="
 
       - name: Upload Package
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           cd "$GITHUB_WORKSPACE"
+          git status
           git add .
 
           if git diff --cached --quiet; then
