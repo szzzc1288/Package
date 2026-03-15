@@ -23,7 +23,7 @@ git clone --depth 1 https://github.com/vernesong/OpenClash && mvdir OpenClash
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages && mvdir openwrt-passwall-packages
 # git clone --depth 1 -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall passwall && mv -n passwall/luci-app-passwall ./;rm -rf passwall
-git clone --depth 1 -b master https://github.com/sirpdboy/luci-theme-kucat.git luci-theme-kucat
+git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat.git && rm -rf luci-theme-kucat/.git
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
