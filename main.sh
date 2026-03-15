@@ -41,12 +41,12 @@ git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packa
 #svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
 
 
-git clone --depth 1 --filter=blob:none --sparse https://github.com/kenzok8/small-package.git small-package
-cd small-package
-git sparse-checkout set pdnsd-alt
-mv -n pdnsd-alt ../
-cd ..
-rm -rf small-package
+## git clone --depth 1 --filter=blob:none --sparse https://github.com/kenzok8/small-package.git small-package
+## cd small-package
+## git sparse-checkout set pdnsd-alt
+## mv -n pdnsd-alt ../
+## cd ..
+## rm -rf small-package
 
 # git_sparse_clone master "https://github.com/immortalwrt/packages" "immpack" net/sub-web \\
 # net/smartdns net/dnsproxy net/haproxy net/v2raya net/cdnspeedtest \\
@@ -56,14 +56,15 @@ rm -rf small-package
 # utils/cpulimit utils/filebrowser
 
 # 拉取 kenzok8/small-package 指定目录到 immpack
-echo "Cloning selected directories from kenzok8/small-package..."
-git clone --filter=blob:none --sparse https://github.com/kenzok8/small-package immpack
-cd immpack
-git sparse-checkout init --cone
-git sparse-checkout set sub-web smartdns dnsproxy haproxy v2raya cdnspeedtest \\
-subconverter ngrokc oscam scutclient gost \\
-jpcre2 wxbase rapidjson libcron quickjspp toml11 \\
-cpulimit filebrowser
+## echo "Cloning selected directories from kenzok8/small-package..."
+## git clone --filter=blob:none --sparse https://github.com/kenzok8/small-package immpack
+## cd immpack
+## git sparse-checkout init --cone
+## git sparse-checkout set sub-web smartdns dnsproxy haproxy v2raya cdnspeedtest \\
+## subconverter ngrokc oscam scutclient gost \\
+## jpcre2 wxbase rapidjson libcron quickjspp toml11 \\
+## cpulimit filebrowser
+
 # 将拉取的目录移动到上级目录
 mv -n sub-web smartdns dnsproxy haproxy v2raya cdnspeedtest \\
 subconverter ngrokc oscam scutclient gost \\
