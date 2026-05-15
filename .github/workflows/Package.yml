@@ -5,15 +5,19 @@ on:
     paths:
       - '.github/workflows/Package.yml'
       - '.github/diy/main.sh'
-  workflow_dispatch:
   schedule:
     - cron: 10 5/6 * * *
-  watch:
-    types: started
   repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'packages'
+        required: false
+        default: 'false'
 
 jobs:
-  check:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id || ! github.event.sender.id
     runs-on: ubuntu-latest
 
     name: Update ${{matrix.target}}
