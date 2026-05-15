@@ -5,83 +5,58 @@ on:
     paths:
       - '.github/workflows/Package.yml'
       - 'diy/**'
-      - 'main.sh'
   workflow_dispatch:
   schedule:
-    - cron: '10 02 * * 0'
+    - cron: 10 5/6 * * *
   watch:
-    types: [started]
+    types: started
   repository_dispatch:
-
-env:
-  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      actions: write
+
+    name: Update ${{matrix.target}}
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [main]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    - name: Checkout
+      uses: actions/checkout@main
+      with:
+        fetch-depth: 0
 
-      - name: Initialization environment
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          sudo timedatectl set-timezone "Asia/Shanghai"
+    - name: Initialization environment
+      run : |
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        sudo timedatectl set-timezone "Asia/Shanghai"
+        
+    - name: Clone packages
+      run: |
+        cd $GITHUB_WORKSPACE
+        chmod +x ${{matrix.target}}.sh
+        git clone -b ${{matrix.target}} https://github.com/szzzc1288/Package.git ${{matrix.target}}
+        cd ${{matrix.target}}
+        git rm -r --cache * >/dev/null 2>&1 &
+        rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
+        $GITHUB_WORKSPACE/${{matrix.target}}.sh
 
-      - name: Prepare build workspace
-        run: |
-          rm -rf /tmp/package_build
-          mkdir -p /tmp/package_build
-          rsync -a \
-            --exclude='.git' \
-            --exclude='.github' \
-            "$GITHUB_WORKSPACE/" /tmp/package_build/
-
-      - name: Run main.sh in temp dir
-        run: |
-          cd /tmp/package_build
-          chmod +x main.sh
-          bash ./main.sh
-
-      - name: Sync result back to repo
-        run: |
-          cd "$GITHUB_WORKSPACE"
-          find . -mindepth 1 -maxdepth 1 \
-            ! -name '.git' \
-            ! -name '.github' \
-            ! -name 'main.sh' \
-            ! -name 'diy' \
-            -exec rm -rf {} +
-          rsync -a --delete \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='main.sh' \
-            --exclude='diy' \
-            /tmp/package_build/ "$GITHUB_WORKSPACE/"
-
-      - name: Commit and push
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: |
-          cd "$GITHUB_WORKSPACE"
-          pwd
-          ls -la
-          git rev-parse --show-toplevel
-          git status
-          git add .
-          if git diff --cached --quiet; then
-            echo "ℹ️ 没有文件变化，跳过 commit"
-          else
-            git commit -m "update $(date +'%Y-%m-%d %H:%M:%S')"
-            git push --quiet "https://${ACCESS_TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
-            echo "✅ 已提交并推送更新"
-          fi
+    - name: Upload Package
+      env: 
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: |
+        [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/${{matrix.target}}
+        [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
+        cd $GITHUB_WORKSPACE/${{matrix.target}}
+        git add .
+        git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
+        git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/szzzc1288/Package.git" HEAD:${{matrix.target}}
+               
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1
