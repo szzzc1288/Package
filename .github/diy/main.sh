@@ -38,6 +38,7 @@ git clone --depth 1 https://github.com/fw876/helloworld && mv -n helloworld/{luc
 # git clone --depth 1 https://github.com/sirpdboy/luci-theme-kucat
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advancedplus && rm -rf luci-app-advancedplus/.git
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packages/luci-app-bypass kwrt-packages/luci-app-fileassistant ./ ; rm -rf kwrt-packages
+git clone --depth 1 https://github.com/sirpdboy/luci-theme-opentopd
 #svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
 
 git_sparse_clone master "https://github.com/coolsnowwolf/packages" "leanpack" net/miniupnpd net/mwan3 \
