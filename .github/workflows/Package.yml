@@ -6,7 +6,7 @@ on:
       - '.github/workflows/Package.yml'
       - '.github/diy/main.sh'
   schedule:
-    - cron: 10 5/6 * * *
+    - cron: '0 */4 * * *'
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -34,10 +34,10 @@ jobs:
 
     - name: Initialization environment
       run : |
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
+        git config --global user.email "138572753+szzzc1288@users.noreply.github.com"
+        git config --global user.name "szzzc1288"
         sudo timedatectl set-timezone "Asia/Shanghai"
-        
+
     - name: Clone packages
       run: |
         cd $GITHUB_WORKSPACE
@@ -48,8 +48,9 @@ jobs:
         rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
         $GITHUB_WORKSPACE/.github/diy/${{matrix.target}}.sh
 
+
     - name: Upload
-      env: 
+      env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         if [ -e $GITHUB_WORKSPACE/LICENSE ]; then
@@ -67,7 +68,7 @@ jobs:
           echo "nothing to commit"
           exit 0
         fi || exit 0
-               
+
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
