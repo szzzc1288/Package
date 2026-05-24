@@ -218,6 +218,7 @@
 233abc.com
 2371tom.com
 24h.tv
+24hbook.com
 24hjav.com
 24hrs.ca
 24porn.com
@@ -399,6 +400,7 @@
 55dndn.com
 567321.online
 568xe.com
+573.jp
 58avgo.com
 592r.com
 59mvmv.com
@@ -1285,6 +1287,7 @@ alchemysynth.com
 alefbank.com
 alexa.com
 alexanderstreet.com
+alfa.me
 alfabank.oavdo.amc
 alfabank.ru
 alfabank.st
@@ -2210,6 +2213,7 @@ archives.gov
 archivx.to
 archlinux.de
 archlinux.org
+archlinux.page
 archlinuxarm.org
 archlinuxcn.org
 arcraiders.com
@@ -9285,6 +9289,7 @@ g-technology.com
 g-tun.com
 g-tvapp.com
 g-xxxhub.com
+g.ai
 g.co
 g.dev
 g.page
@@ -13244,6 +13249,7 @@ keytransparency.com
 keytransparency.foo
 keytransparency.org
 kfs.io
+kgisystems.com
 kgslb.com
 khanacademy.org
 khatrimaza.org
@@ -13337,6 +13343,7 @@ kisscos.net
 kissjav.com
 kissjav.li
 kitakyushubank.co.jp
+kiwi.jp
 kiwi.kz
 kiwibrowser.com
 kiyobank.co.jp
@@ -13374,6 +13381,20 @@ kompozer.net
 konachan.com
 konachan.net
 konachan.wjcodes.com
+konami
+konami-igaming.online
+konami.co.jp
+konami.com
+konami.net
+konami.org
+konamicrossmedia.com
+konamigaming.com
+konamigaming.net
+konamigaming.online
+konamionline.com
+konamiopen.jp
+konamisportsclub.jp
+konamistyle.jp
 koolsolutions.com
 koornk.com
 kopfhorergunstigshop.com
@@ -13564,6 +13585,7 @@ lenkino.xxx
 lenporno.net
 lenporno.red
 lenwhite.com
+leonardo.ai
 leporno.org
 lepornochaud.com
 lepornofrais.com
@@ -14196,6 +14218,7 @@ marvelsuperheroseptember.com
 marvelsuperwar.com
 marxist.net
 marxists.org
+mas.to
 masalabin.com
 masaladesi.com
 masalaseen.net
@@ -15375,10 +15398,12 @@ moxing.mobi
 moxing.news
 moystoys.com
 mozgcp.net
+mozilla.ai
 mozilla.com
 mozilla.community
 mozilla.net
 mozilla.org
+mozillafoundation.org
 mp.world
 mpettis.com
 mpfinance.com
@@ -15704,6 +15729,7 @@ mysocialworklab.com
 myspacecdn.com
 mysql.com
 mystrikingly.com
+myteamspeak.com
 myteenwebcam.com
 mythicentertainment.com
 mythicentertainment.net
@@ -15726,6 +15752,7 @@ myxxgirl.com
 myyoungmomisnude.com
 myyoungwifeisnude.com
 mzed.com
+mzl.la
 mzstatic.com
 n0vadesktop.com
 n26.com
@@ -15875,6 +15902,7 @@ nenastran.com
 nenitas.club
 nentindo.net
 neo-miracle.com
+neodb.social
 neoforged.net
 neotokyo.supertop-100.com
 neovim.io
@@ -18698,6 +18726,7 @@ ramcity.com.au
 randyblue.com
 rapefilms.net
 rapetube.me
+raphael.app
 rapidmoviez.com
 rapidprototyping-cadcam.com
 rapidssl.com
@@ -18955,6 +18984,8 @@ researchkit.hk
 researchkit.net
 researchkit.org
 researchkit.tv
+resella.jp
+resellablue.com
 resilio.com
 resistchina.org
 resonabank.co.jp
@@ -19158,6 +19189,7 @@ ruhub.tv
 ruinedking.com
 rukoebxx.com
 rulaisc-tv.buzz
+rule34.us
 rule34.xxx
 rule34h.com
 rule34pornvids.com
@@ -19981,6 +20013,7 @@ shywifeswap.com
 siam.org
 sibreal.org
 sidelinesnews.com
+sider.ai
 siege-amazon.com
 sifangclub.com
 sigcomm.org
@@ -20412,6 +20445,7 @@ sos44.com
 sosad.fun
 soso7778.com
 sosreader.com
+sotwe.com
 soubory.com
 souka.xyz
 soulcaliburhentai.net
@@ -21150,6 +21184,7 @@ taose.in
 tap.io
 tapanwap.com
 tapatalk.com
+tapnow.ai
 taptap.io
 taptotokyo.com
 taqunuhai.vip
@@ -21198,6 +21233,8 @@ teachmyass.com
 teachparentstech.org
 teamneedforspeed.com
 teamskeet.com
+teamspeak-services.com
+teamspeak.com
 teamviewer.com
 teamviewer.us
 tearapeak.com
@@ -25320,6 +25357,7 @@ ytn.co.kr
 yuanming.net
 yuenuge113.xyz
 yuenuge18.cc
+yugioh-card.com
 yulghun.com
 yuming.qxbbs.org
 yunchao.net
@@ -25435,6 +25473,7 @@ zhainanjidi.xyz
 zhainanjidid.top
 zhangboz1.xyz
 zhangtianliang.com
+zhangzhehan.net
 zhanlve.org
 zhao.1984.city
 zhengjian.org
@@ -25748,6 +25787,7 @@ full:espndotcom.tt.omtrdc.net
 full:f3b7q2p3.ssl.hwcdn.net
 full:fandom.zendesk.com
 full:faronics.kayako.com
+full:favoritescc-hamivideo2.cdn.hinet.net
 full:fbcdn-a.akamaihd.net
 full:firebase.google.com
 full:firebase.googleapis.com
@@ -25804,6 +25844,7 @@ full:imperial.insendi.com
 full:ingest.apple-studies.com
 full:lastfm.freetls.fastly.net
 full:lazer.ppy.sh
+full:lgcscc-hamivideo2.cdn.hinet.net
 full:lgelectronics.122.2o7.net
 full:licdn.cn.cdn20.com
 full:linear-abematv.akamaized.net
@@ -26065,6 +26106,7 @@ full:t21.nikkei.co.jp
 full:t21ipau.nikkei.co.jp
 full:teamviewer.com.cdn.cloudflare.net
 full:tesla-cdn.thron.com
+full:thumbnail-hamivideo.cdn.hinet.net
 full:time-a-b.nist.gov
 full:time-a-g.nist.gov
 full:time-a-wwv.nist.gov
@@ -26098,6 +26140,7 @@ full:time3.google.com
 full:time4.facebook.com
 full:time4.google.com
 full:time5.facebook.com
+full:tlmr-hamivideo2.cdn.hinet.net
 full:tmdb-image-prod.b-cdn.net
 full:tmdb-web-image-prod.b-cdn.net
 full:tv.applemusic.com
@@ -26160,6 +26203,7 @@ full:vsmarketplacebadge.apphb.com
 full:wb-agora-hydra-file-storage-k1.s3.amazonaws.com
 full:webchannel-alkalimakersuite-pa.clients6.google.com
 full:weblive-hamivideo.cdn.hinet.net
+full:webvodad-hamivideo.cdn.hinet.net
 full:widgets.stripst.com
 full:wip.adobe.com
 full:wip1.adobe.com
