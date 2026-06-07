@@ -1,67 +1,76 @@
-# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-License-Identifier: GPL-2.0-only
 #
-# Copyright (C) 2021 ImmortalWrt.org
+# Copyright (C) 2025 ImmortalWrt.org
+#
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tuic-client
-PKG_VERSION:=1.8.4
+PKG_VERSION:=1.7.2
 PKG_RELEASE:=1
 
-PKG_LICENSE_FILES:=LICENSE
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://codeload.github.com/Itsusinn/tuic/tar.gz/v$(PKG_VERSION)?
+PKG_HASH:=7a08641826cb7e166ae6db06f367ffeeeddd17f11ee5ae23435ec5701099149a
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
+PKG_LICENSE:=GPL-3.0-only
+PKG_LICENSE_FILES:=LICENSE
+
+PKG_BUILD_DEPENDS:=rust/host
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 
-ifeq ($(ARCH),aarch64)
-	TUIC_ARCH:=tuic-client-aarch64-linux-musl
-	PKG_HASH:=7e3d3bbcd557851dabf9de0362a85b2b7c40c192322fb2eec22d2851f6cd54fe
-else ifeq ($(ARCH),arm)
-# Referred to golang/golang-values.mk
-	ARM_CPU_FEATURES:=$(word 2,$(subst +,$(space),$(call qstrip,$(CONFIG_CPU_TYPE))))
-	ifeq ($(ARM_CPU_FEATURES),)
-		TUIC_ARCH:=tuic-client-armv7-linux-musl
-		PKG_HASH:=c23cea7bd1ba79a31bd168c98f3b0e9a4e13954fa760b9aa90bb8d355b762566
-	else
-		TUIC_ARCH:=tuic-client-armv7-linux-muslhf
-		PKG_HASH:=b04fb9f958f2c42fff07786261eaff1934b28dc5d2f1a561fc11a932c79b50cd
-	endif
-else ifeq ($(ARCH),i386)
-	TUIC_ARCH:=tuic-client-i686-linux-musl
-	PKG_HASH:=48ab214eefaaba63cce365c6c03ce292110b93e3470dcc4f84f54243ccc6d1a7
-else ifeq ($(ARCH),x86_64)
-	TUIC_ARCH:=tuic-client-x86_64-linux-musl
-	PKG_HASH:=78861294b538f0be2b252f0b3aa03fa6a24fb0912c69587240357469a258496e
-# Set the default value to make OpenWrt Package Checker happy
-else
-  PKG_SOURCE:=dummy
-  PKG_HASH:=dummy
-endif
-
-define Download/tuic-client
-	URL:=https://github.com/Itsusinn/tuic/releases/download/v$(PKG_VERSION)/
-	URL_FILE:=$(TUIC_ARCH)
-	FILE:=$(TUIC_ARCH)-$(PKG_VERSION)
-	HASH:=$(PKG_HASH)
-endef
-
-$(eval $(call Download,tuic-client))
+TAR_OPTIONS += --strip-components 1
+TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
 
 define Package/tuic-client
-	SECTION:=net
-	CATEGORY:=Network
-	SUBMENU:=Web Servers/Proxies
-	TITLE:=Delicately-TUICed 0-RTT proxy protocol
-	URL:=https://github.com/Itsusinn/tuic
-	DEPENDS:=@USE_MUSL @(aarch64||arm_v7||i386||x86_64) @!(TARGET_x86_geode||TARGET_x86_legacy)
+  SECTION:=net
+  CATEGORY:=Network
+  SUBMENU:=Web Servers/Proxies
+  TITLE:=TUIC proxy protocol client
+  URL:=https://github.com/EAimTY/tuic
+  DEPENDS:=@(aarch64||arm||x86_64||i686||riscv64||loongarch64)
+endef
+
+define Package/tuic-client/description
+  Delicately-TUICed 0-RTT proxy protocol client.
+endef
+
+define Select/Features
+$(strip \
+  $(if $(or \
+    $(findstring i686,$(RUSTC_TARGET_ARCH)), \
+    $(findstring arm,$(RUSTC_TARGET_ARCH)), \
+    $(findstring riscv64,$(RUSTC_TARGET_ARCH)), \
+    $(findstring loongarch64,$(RUSTC_TARGET_ARCH)) \
+  ),--no-default-features --features ring) \
+  $(if $(or \
+    $(findstring x86_64,$(RUSTC_TARGET_ARCH)), \
+    $(findstring aarch64,$(RUSTC_TARGET_ARCH)) \
+  ),--features jemallocator) \
+)
 endef
 
 define Build/Compile
+	( \
+		pushd $(PKG_BUILD_DIR) ; \
+		$(CARGO_PKG_CONFIG_VARS) \
+		cargo build --release \
+			-p tuic-client \
+			--target $(RUSTC_TARGET_ARCH) \
+			$(call Select/Features) ; \
+		popd ; \
+	)
 endef
 
 define Package/tuic-client/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(DL_DIR)/$(TUIC_ARCH)-$(PKG_VERSION) $(1)/usr/bin/tuic-client
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/target/$(RUSTC_TARGET_ARCH)/release/tuic-client $(1)/usr/bin/
 endef
 
+$(eval $(call RustBinPackage,tuic-client))
 $(eval $(call BuildPackage,tuic-client))

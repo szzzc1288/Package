@@ -232,6 +232,7 @@ function gen_outbound(flag, node, tag, proxy_table)
 				--max_version = "1.3",
 				fragment = fragment,
 				record_fragment = record_fragment,
+				certificate = (node.tls_certificate == "1" and node.tls_certificate_pem ~= "") and split(node.tls_certificate_pem, "\n") or nil,
 				ech = (node.ech == "1") and (function()
 					local function get_ech_domain(s) --兼容xray "域名+DNS" 格式ech
 						local domain, dns = s:match("^([^+]+)%+(.+)$")
@@ -1665,7 +1666,8 @@ function gen_config(var)
 							invert = e.invert == "1" and true or nil
 						}
 						string.gsub(e.domain_list, '[^' .. "\r\n" .. ']+', function(w)
-							if w:find("#") == 1 then return end
+							w = api.trim(w)
+							if w == "" or w:find("#") == 1 then return end
 							if w:find("geosite:") == 1 then
 								local _geosite = w:sub(1 + #"geosite:")  --适配srs
 								local t = geo_rule_set("geosite", _geosite)
@@ -1702,7 +1704,7 @@ function gen_config(var)
 							domain_table.fakedns = true
 						end
 
-						if outboundTag then
+						if outboundTag and (rule.domain or rule.domain_suffix or rule.domain_keyword or rule.domain_regex or rule.rule_set) then
 							table.insert(dns_domain_rules, api.clone(domain_table))
 						end
 					end
@@ -1711,7 +1713,8 @@ function gen_config(var)
 						local ip_cidr = {}
 						local is_private = false
 						string.gsub(e.ip_list, '[^' .. "\r\n" .. ']+', function(w)
-							if w:find("#") == 1 then return end
+							w = api.trim(w)
+							if w == "" or w:find("#") == 1 then return end
 							if w:find("geoip:") == 1 then
 								local _geoip = w:sub(1 + #"geoip:")     --适配srs
 								if _geoip == "private" then
@@ -1758,6 +1761,12 @@ function gen_config(var)
 			table.insert(route.rules, rules[index])
 		end
 	end
+
+	table.insert(route.rules, {
+		action = "route",
+		ip_is_private = true,
+		outbound = "direct"
+	})
 
 	if COMMON.default_outbound_tag then
 		route.final = COMMON.default_outbound_tag
