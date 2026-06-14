@@ -1390,6 +1390,7 @@ allinternal.com
 allizom.net
 allizom.org
 alljapanesepass.com
+allkeyshop.com
 allmomsex.com
 allmovie.com
 allover30.com
@@ -1605,6 +1606,7 @@ amcplus.com
 amd.com
 amd.com.cn
 amdfanstore.com
+amdgaming.com
 amdigital.co.uk
 ameba.jp
 amebame.com
@@ -2629,6 +2631,7 @@ avdudu.top
 avdwang.xyz
 avelip.com
 aventertainments.com
+avermedia.com
 aversbank.ru
 avfox.cc
 avg.com
@@ -3433,6 +3436,7 @@ beurettesvideo.com
 bextbuy.com
 beyondcore.com
 bfa.ru
+bfads.net
 bffshd.com
 bfnn.org
 bfsh.hk
@@ -4551,6 +4555,7 @@ budaedu.org
 budatt.com
 buddymedia.com
 buffered.com
+bugsnag.com
 bugzilla.org
 buhidoh.net
 buicha.social
@@ -4655,6 +4660,7 @@ buypass-ssl.com
 buypass.com
 buypass.no
 buypass.se
+buyservices.com
 buyshoponly.com
 buzzardflapper.com
 buzzav.com
@@ -5021,6 +5027,7 @@ cchostvps.xyz
 cciernslabs.com
 cciesecuritylabs.com
 ccievoicelabs.com
+ccleaner.com
 cclife.org
 cclifefl.org
 ccna5.net
@@ -5424,6 +5431,7 @@ citylab.com
 cityoflove.com
 citypopulation.de
 citytourgirls.com
+cityu.hk
 civicparty.hk
 civil3d.com
 civilcc.com
@@ -5654,6 +5662,7 @@ coinbase.com
 coinbene.com
 coindesk.com
 coinex.com
+coingate.com
 coingecko.com
 coingi.com
 coinglass.com
@@ -5968,6 +5977,7 @@ cuckwatchingwife.com
 cuckwimp.com
 cuebic.biz
 cuffiesaldi.com
+cuhk.hk
 cuinc.oen.tw
 cuinc.tw
 cuiweiping.net
@@ -6685,6 +6695,9 @@ discountbeatsbydre-us.com
 discountbeatsstore.com
 discountedporn.com
 discountporn.club
+discourse-cdn.com
+discourse.group
+discourse.org
 discovershiretoko.org
 discoveryplus.com
 discreet.com
@@ -6924,6 +6937,7 @@ doseofporn.com
 dot-mac.de
 dot.net
 dot.sb
+dota2.com
 dotcernpilot.info
 dotdeb.org
 dotfacebook.com
@@ -7316,6 +7330,10 @@ easysexporn.com
 eater.com
 ebahy.com
 ebalovo.com
+ebates.ca
+ebates.kr
+ebates.sg
+ebatescanada.com
 ebay-authenticate.net
 ebay-confirm.com
 ebay-course.com
@@ -7498,6 +7516,7 @@ ebscohost.com
 ebtcbank.com
 ebuyer.com
 ebuyheadphones.com
+ecbsn.com
 ecchinohentai.ru
 ecert.gov.hk
 ecfa.org.tw
@@ -7532,9 +7551,11 @@ edisebay.com
 editorx.com
 edninfo.com
 edu-research.org
+edu.hk
 edu.ir
 edubridge.com
 education-cadcam.com
+eduhk.hk
 eduplus.hk
 edx-cdn.org
 edx.org
@@ -7579,6 +7600,7 @@ electronicarts.com
 electronicarts.fr
 electronicsignature.ru
 electronjs.org
+elegantthemes.com
 element.io
 elementary.io
 elephantlist.com
@@ -8455,6 +8477,7 @@ fasttext.cc
 fasttrackreadysupport.com
 fatbtc.com
 fatstube.com
+fatwallet.com
 favebook.com
 favelaporno.com
 favepornmovs.com
@@ -8593,6 +8616,7 @@ fic.fan
 ficador.com
 ficbook.net
 ficeboock.com
+ficgs.com
 ficmania.com
 fictionmania.tv
 fiddle.jshell.net
@@ -8605,6 +8629,7 @@ figprayer.com
 fileflyer.com
 filesmonster.vip
 filesor.com
+filezilla-project.org
 filipino-music.net
 filme2.xxx
 filmeleporno.xxx
@@ -9271,6 +9296,7 @@ fulloutsourcing.jp
 fullpornnetwork.com
 fullservicegame.com
 fullsexmovs.com
+fullstory.com
 fulltaboo.tv
 fullxxxmovies.net
 fundaiphone5s.com
@@ -9387,7 +9413,9 @@ gamesfirsthelsinki.com
 gamesfuckgirls.com
 gamesofdesire.com
 gamespark.jp
+gamesplanet.com
 gamesstack.com
+gametap.com
 gameuxmasterguide.com
 gamez.com.tw
 gaming-notebooks.com
@@ -9663,6 +9691,7 @@ gfwbao.com
 gfx.ms
 gfycat.com
 gfysex.com
+gg.deals
 ggdiao.com
 ggjav.com
 ggoogle.com
@@ -9675,6 +9704,7 @@ ggssl.com
 gh.io
 ghbi.ir
 ghcr.io
+ghe.com
 ghettotube.com
 ghidra-sre.org
 ghostarchive.org
@@ -9736,6 +9766,7 @@ git-scm.com
 git.io
 gitbook.com
 gitbook.io
+gitgud.io
 github.ai
 github.blog
 github.com
@@ -10266,6 +10297,7 @@ gov.tw
 governmentengineer.com
 govforce.com
 gpb.ru
+gpstatic.com
 gpstheseries.com
 gputechconf.co.kr
 gputechconf.com
@@ -10936,6 +10968,7 @@ hitun.io
 hitxhot.com
 hive.blog
 hiveon.net
+hivepress.io
 hjb246.top
 hjb7e9.top
 hk-pub.com
@@ -10948,6 +10981,7 @@ hkbn.com.hk
 hkbn.net
 hkbnes.net
 hkbookcity.com
+hkbu.hk
 hkchronicles.com
 hkcircleapp.com
 hkcitizenmedia.com
@@ -10982,6 +11016,8 @@ hkt.com
 hkteducation.com
 hktpremier.com
 hktshop.com
+hku.hk
+hkust.hk
 hlbelygl.com
 hlsp1.pw
 hm.com
@@ -11516,6 +11552,7 @@ hydrogenaud.io
 hyper.is
 hyperbeam.com
 hyperdreams.com
+hyperliquid.xyz
 hyperrate.com
 hyperscan.io
 hypnohub.net
@@ -12043,6 +12080,7 @@ infocert.digital
 infocert.it
 infoglobo.com.br
 infolinker.com.tw
+infoq.com
 infoq.jp
 informs.org
 infosec.exchange
@@ -13044,7 +13082,6 @@ jmcomic1.mobi
 jmcomic1.rocks
 jmcomic2.moe
 jmlr.org
-jmsc.hku.hk
 jmscult.com
 jmvbt.com
 jneurosci.org
@@ -13389,6 +13426,7 @@ kingkongapp.com
 kingofpics.com
 kingstagram.com
 kingstone.com.tw
+kinguin.net
 kinguno.xyz
 kink.com
 kinkbook.com
@@ -13561,6 +13599,7 @@ lanasbigboobs.com
 landofhope.tv
 langchain.com
 langsuirs.com
+languagetool.org
 lanik.us
 lanmdh.net
 lanniser-ylo.shop
@@ -13721,7 +13760,6 @@ libgen.st
 liboggirls.net
 library-access.sk
 library.lol
-library.usc.cuhk.edu.hk
 librarylovefest.com
 libraryofthumbs.com
 libredd.it
@@ -13739,6 +13777,8 @@ lifestyle-tec.ru
 lifewire.com
 lightbridge.com
 lighten.org.tw
+lighter.exchange
+lighter.xyz
 lighti.me
 lightnovel.cn
 lightxxxtube.com
@@ -13832,6 +13872,8 @@ livefilestore.com
 livehdcams.com
 livejasmin.com
 livejasminbabes.net
+livejournal.com
+livejournal.net
 liveleak.com
 livemint.com
 livemodels.co
@@ -15212,7 +15254,6 @@ mizzmona.com
 mji.rip
 mjj.rip
 mjj.today
-mjlsh.usc.cuhk.edu.hk
 mjv-art.org
 mk.shrimpia.network
 mk.yopo.work
@@ -15447,6 +15488,7 @@ motiongraphicsandmore.com
 motionpictureser.com
 moto.com
 motolia.com
+motopress.com
 motorola.ca
 motorola.cl
 motorola.co
@@ -15598,6 +15640,7 @@ msturing.org
 msudalosti.com
 msunlimitedcloudsummit.com
 mswe1.org
+msys2.org
 mt.lv
 mt0011.site
 mtao.fun
@@ -16177,7 +16220,9 @@ nexo.io
 nexon.co.jp
 nexon.com
 nexon.io
+nexon.net
 nexoncdn.co.kr
+nexongames.co.kr
 nexpart.com
 nexpart.tv
 next.com
@@ -16244,6 +16289,10 @@ nhentai.xxx
 nhentaihaven.com
 nhentaihaven.org
 nheos.com
+nhk
+nhk.jp
+nhk.or.jp
+nhkworld.jp
 nhncorp.jp
 nic.cz.cc
 nic.gov
@@ -16540,6 +16589,7 @@ notepad-plus-plus.org
 noticias-rt.com
 notimundo.press
 notion-static.com
+notion-status.com
 notion.com
 notion.new
 notion.site
@@ -16581,6 +16631,7 @@ nsfw.xxx
 nsfw247.to
 nsfwmemes.com
 nsimg.net
+nspk.ru
 ntc.party
 ntd.com
 ntd.tv
@@ -16782,6 +16833,7 @@ nwxs8.com
 nxta.org
 nxtdig.com.hk
 nxtdig.com.tw
+nxtv.jp
 nyaa.eu
 nyaa.net
 nyaa.si
@@ -16811,6 +16863,7 @@ o3o.ca
 o3t.ru
 o3team.ru
 oaistatic.com
+oaistatsig.com
 oaiusercontent.com
 oanda.com
 oanencore.com
@@ -16919,6 +16972,7 @@ oktech.ru
 okx-dns.com
 okx-dns1.com
 okx-dns2.com
+okx.ac
 okx.cab
 okx.com
 old.honeynet.org
@@ -17999,6 +18053,7 @@ polymarket.com
 polymer-project.org
 polymerhk.com
 polymerproject.org
+polyu.hk
 ponyanimalsex.com
 poofetish.com
 pool.ntp.org
@@ -18704,6 +18759,7 @@ qmp4.com
 qmttqg3k.me
 qnap.com
 qobuz.com
+qoder.com
 qombol.com
 qoo-app.com
 qoo10.jp
@@ -18855,7 +18911,10 @@ rakuten.co.jp
 rakuten.com
 rakuten.com.tw
 rakuten.ne.jp
+rakuten.tv
 rakuten.tw
+rakutenadvertising.com
+rakutengiftcards.ca
 rakuya.com.tw
 ramcity.com.au
 randyblue.com
@@ -19294,6 +19353,7 @@ rplay.live
 rpmfusion.org
 rprimelab.com
 rqbank.ir
+rrcbsn.com
 rrl28.buzz
 rrs1.xyz
 rrtis.com
@@ -22636,6 +22696,9 @@ uncyclopedia.tw
 underhentai.net
 underlords.com
 underwoodammo.com
+unext-info.jp
+unext.co.jp
+unext.jp
 unfiltered.news
 unholyknight.com
 unidraw.io
@@ -22779,6 +22842,7 @@ uymaarip.com
 v-av.com
 v-has.com
 v.gd
+v.ps
 v2.help
 v2.hysteria.network
 v2ex.com
@@ -22807,6 +22871,7 @@ valoryirene.com
 value-domain.com
 value-server.com
 valuegb.com
+valve.net
 valvesoftware.com
 vamo.com
 vamzakaz.ru
@@ -23116,6 +23181,7 @@ viewgals.com
 viewpointsfromfacebook.com
 vigorgame.com
 viju.ru
+viki.com
 vikiporn.com
 vilanet.me
 vilavpn.com
@@ -23687,6 +23753,7 @@ vporn.com
 vpornvideos.com
 vpro.com
 vpro.net
+vps.hosting
 vpsxb.net
 vrbgay.com
 vrcams.io
@@ -24279,6 +24346,7 @@ woolitecarpet.com
 woolyss.com
 woopie.jp
 woopie.tv
+wordcamp.org
 wordpress.com
 wordpress.net
 wordpress.org
@@ -24330,6 +24398,7 @@ wp-themes.com
 wp.com
 wpewebkit.org
 wplace.live
+wpmailsmtp.com
 wpoforum.com
 wpvip.com
 wrenchead.com
@@ -24663,9 +24732,15 @@ xn--d1aqf.xn--p1ai
 xn--d4ty0ojsqzfd.com
 xn--e1adjldbbpv.xn--90ais
 xn--e1aigb.xn--p1ai
+xn--fiqs8s1bxp3anr7a.hk
+xn--fiqs8s1bxp3anr7a.xn--j6w193g
+xn--fiqs8s1byzqyvl.hk
+xn--fiqs8s1byzqyvl.xn--j6w193g
 xn--fiqs8sxootzz.xn--hxt814e
 xn--flw351e
 xn--flw351e.com
+xn--gdt08a.hk
+xn--gdt08a.xn--j6w193g
 xn--ggle-55da.com
 xn--gmq348bujlxrb.com
 xn--gmq92kd2rm1kx34a.com
@@ -24685,11 +24760,23 @@ xn--kcrv3utim32hx9f6qe.com
 xn--kput3imi374g.xn--hxt814e
 xn--mts47c3w9b1qr.net
 xn--mtswd61ejxq.com
+xn--mxtq18a.hk
+xn--mxtq18a.xn--j6w193g
 xn--ngstr-lra8j.com
 xn--noss43i.com
 xn--oiq.cc
 xn--p8j9a0d9c9a.xn--q9jyb4c
 xn--pearsonenespaol-brb.com
+xn--pssu7ci2j23mp9ny48b.hk
+xn--pssu7ci2j23mp9ny48b.xn--j6w193g
+xn--pssu7cv61af1tcs59bnvd.hk
+xn--pssu7cv61af1tcs59bnvd.xn--j6w193g
+xn--pssu7cv61af44b.hk
+xn--pssu7cv61af44b.xn--j6w193g
+xn--pssu7cv61ahw8aq79bztd.hk
+xn--pssu7cv61ahw8aq79bztd.xn--j6w193g
+xn--pssu7cv61ahwcb1p2yk.hk
+xn--pssu7cv61ahwcb1p2yk.xn--j6w193g
 xn--q41am8x.com
 xn--qcka1pmc
 xn--qoq462m.com
@@ -24702,7 +24789,13 @@ xn--tkry91n.com
 xn--u2u927b.com
 xn--ubt498knmf.com
 xn--uis17aj9kmuf.com
+xn--uis44a.xn--j6w193g
 xn--urs05q.jp
+xn--wcv22d.hk
+xn--wcv22d.xn--j6w193g
+xn--wcvs22d.xn--j6w193g
+xn--wcvs22d1m.hk
+xn--wcvs22d1m.xn--j6w193g
 xn--x-qeu1ji09tzlg.biz
 xn--x-qeu1ji09tzlg.net
 xn--xsq421m.com
@@ -24790,6 +24883,16 @@ xt.com
 xt.pub
 xtapes.to
 xtegvk.xyz
+xtom.au
+xtom.com
+xtom.de
+xtom.ee
+xtom.hk
+xtom.jp
+xtom.nl
+xtom.sg
+xtom.social
+xtom.us
 xtracloud.net
 xtube.com
 xtubebdsm.com
@@ -25725,6 +25828,7 @@ zinio.com
 zipcine.com
 ziraatbank.ru
 zishy.com
+zklighter.elliot.ai
 zlib.life
 zlibcdn.com
 zlibcdn2.com
@@ -26045,6 +26149,7 @@ full:gitlab-assets.oss-cn-hongkong.aliyuncs.com
 full:google-ohttp-relay-safebrowsing.fastly-edge.com
 full:hamivideo.hinet.net
 full:hammerandchisel.ssl.zendesk.com
+full:hb.imgix.net
 full:heads-ak-spotify-com.akamaized.net
 full:heads4-ak-spotify-com.akamaized.net
 full:himalaya-exchange.zendesk.com
