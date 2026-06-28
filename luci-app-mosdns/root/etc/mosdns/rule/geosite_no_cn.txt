@@ -1403,6 +1403,7 @@ allpornsitespass.com
 allspyclips.com
 allswingersclubs.org
 allthefallen.moe
+almalinux.org
 alohatube.com
 alotporn.com
 alphabet.asia
@@ -4644,6 +4645,7 @@ bustynudebabes.com
 bustyoldsluts.com
 bustysammieblack.com
 busu.org
+busybox.net
 buy-from-shanghai.com
 buyaapl.com
 buyaapl.net
@@ -5897,6 +5899,7 @@ crazyxxx3dworld.org
 crazyxxxworld.com
 crbug.com
 crchina.org
+creader.com
 creaders.net
 creamasia.com
 creamlemon.info
@@ -8033,6 +8036,7 @@ exmormon.org
 exoav.com
 exotic-ghana.com
 exoticuganda.com
+exp-tas.com
 expatshield.com
 expecthim.com
 expekt.com
@@ -9657,6 +9661,7 @@ geraldoatlarge.com
 gerritcodereview.com
 gesoten.com
 get.app
+get.dappcdn.com
 get.dev
 get.how
 get.new
@@ -9827,6 +9832,7 @@ gitbook.io
 gitgud.io
 github.ai
 github.blog
+github.career
 github.com
 github.community
 github.dev
@@ -9976,8 +9982,10 @@ gofile.me
 gofucker.com
 gofuckmenow.com
 gofundme.com
+gog-services.com
 gog-statics.com
 gog.com
+gogalaxy.com
 gogettaxi.org
 gogle.com
 gogo-load.com
@@ -13832,6 +13840,7 @@ licdn.com
 licensebuttons.net
 licenseparser.com
 life-global.org
+lifeatspotify.com
 lifemiles.com
 lifeselector.com
 lifestyle-tec.ru
@@ -14337,6 +14346,7 @@ manhuntdaily.com
 manhwa24h.com
 manhwahentai.me
 maniakey.homes
+manjaro.org
 manorama.com
 manoramanews.com
 manoramaonline.com
@@ -19387,6 +19397,7 @@ rocksdb.org
 rocksextube.com
 rockstargames.com
 rockstarnorth.com
+rockylinux.org
 rojo.com
 roku.com
 rokutime.com
@@ -20906,6 +20917,7 @@ spotifycdn.net
 spotifycharts.com
 spotifycodes.com
 spotifyforbrands.com
+spotifyforvendors.com
 spotifyjobs.com
 spraynwash.com
 spreadprivacy.com
@@ -23885,7 +23897,10 @@ vscale.io
 vscale.ru
 vscode-cdn.net
 vscode-unpkg.net
+vscode-webview.net
 vscode.dev
+vscodeedu.app
+vscodeedu.com
 vsemrabota.ru
 vsex.in
 vsezoo.com
@@ -26196,7 +26211,6 @@ full:dlmobilegarena-a.akamaihd.net
 full:dmqdd6hw24ucf.cloudfront.net
 full:docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com
 full:docker-pinata-support.s3.amazonaws.com
-full:download.visualstudio.microsoft.com
 full:dqd0jw5gvbchn.cloudfront.net
 full:dqrpb9wgowsf5.cloudfront.net
 full:ds-linear-abematv.akamaized.net
@@ -26257,6 +26271,8 @@ full:github-production-repository-image-32fea6.s3.amazonaws.com
 full:github-production-upload-manifest-file-7fdce7.s3.amazonaws.com
 full:github-production-user-asset-6210df.s3.amazonaws.com
 full:gitlab-assets.oss-cn-hongkong.aliyuncs.com
+full:gog-cdn-lumen.secure2.footprint.net
+full:gog-cdn.akamaized.net
 full:google-ohttp-relay-safebrowsing.fastly-edge.com
 full:hamivideo.hinet.net
 full:hammerandchisel.ssl.zendesk.com
@@ -26758,6 +26774,7 @@ full:wwis-dubc1-vip97.adobe.com
 full:wwis-dubc1-vip98.adobe.com
 full:wwis-dubc1-vip99.adobe.com
 full:www-cdn.icloud.com.akadns.net
+full:www.microsoft.com
 full:www.quora.com.cdn.cloudflare.net
 full:yangzhi.app
 full:yt3.googleusercontent.com
