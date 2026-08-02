@@ -34,10 +34,6 @@ git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packa
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-opentopd && rm -rf luci-theme-opentopd/.git
 
 
-git clone --depth 1 https://github.com/immortalwrt/luci && \
-mv -n luci/applications/luci-app-ksmbd ./ && \
-rm -rf luci
-
 git_sparse_clone master "https://github.com/immortalwrt/packages" "immpack" net/haproxy
 
 find . -type f -name "update.sh" -exec rm -f {} \;
