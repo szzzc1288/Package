@@ -556,7 +556,7 @@ function get_node_list()
 	uci:foreach(appname, "socks", function(s)
 		if s.enabled == "1" and s.node then
 			node_list.socks_list[#node_list.socks_list + 1] = {
-				id = "Socks_" .. s[".name"],
+				id = s[".name"],
 				remark = i18n.translate("Socks Config") .. " [" .. s.port .. i18n.translate("Port") .. "]",
 				group = "Socks"
 			}
@@ -650,8 +650,9 @@ function gen_uuid(format)
 	return uuid
 end
 
-function gen_short_uuid()
-	return sys.exec("echo -n $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 8)")
+function gen_short_uuid(length)
+	if not length then length = 8 end
+	return sys.exec("echo -n $(head /dev/urandom | tr -dc A-Za-z0-9 | head -c %s)" % length)
 end
 
 function uci_get_type(type, config, default)
@@ -1185,7 +1186,7 @@ function to_extract(app_name, file, subfix)
 				exec("/bin/rm", {"-f", file})
 				return {
 					code = 1,
-					error = i18n.translate("Not installed %s, Can't unzip!" % { tools_name })
+					error = i18n.translatef("Not installed %s, Can't unzip!", tools_name)
 				}
 			end
 		end
