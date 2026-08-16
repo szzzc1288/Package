@@ -104,7 +104,7 @@ if load_urltest_options then -- [[ URLTest Start ]]
 	o = s:option(MultiValue, _n("urltest_node"), translate("URLTest node list"), translate("List of nodes to test, <a target='_blank' href='https://sing-box.sagernet.org/configuration/outbound/urltest'>document</a>"))
 	o:depends({ [_n("node_add_mode")] = "manual" })
 	o.widget = "checkbox"
-	o.template = appname .. "/cbi/nodes_multivalue"
+	o.template = m:template_path("/cbi/nodes_multivalue")
 	o.group = {}
 	for k1, v1 in pairs(node_list) do
 		if k1 == "socks_list" or k1 == "normal_list" then
@@ -115,12 +115,12 @@ if load_urltest_options then -- [[ URLTest Start ]]
 		end
 	end
 	-- 读取旧 DynamicList
-	function o.cfgvalue(self, section)
-		return m.uci:get_list(appname, section, "urltest_node") or {}
+	function o.custom_cfgvalue(self, section)
+		return table.concat(m:get(section, "urltest_node") or {}, " ")
 	end
 	-- 写入保持 DynamicList
 	function o.custom_write(self, section, value)
-		local old = m.uci:get_list(appname, section, "urltest_node") or {}
+		local old = m:get(section, "urltest_node") or {}
 		local new, set = {}, {}
 		for v in value:gmatch("%S+") do
 			new[#new + 1] = v
@@ -128,13 +128,13 @@ if load_urltest_options then -- [[ URLTest Start ]]
 		end
 		for _, v in ipairs(old) do
 			if not set[v] then
-				m.uci:set_list(appname, section, "urltest_node", new)
+				m:set(section, "urltest_node", new)
 				return
 			end
 			set[v] = nil
 		end
 		for _ in pairs(set) do
-			m.uci:set_list(appname, section, "urltest_node", new)
+			m:set(section, "urltest_node", new)
 			return
 		end
 	end
@@ -536,6 +536,9 @@ o.validate = function(self, value)
 	return value
 end
 
+o = s:option(Value, _n("cipherSuites"), translate("Cipher Suites"), '<a href="https://go.dev/src/crypto/tls/cipher_suites.go#L44" target="_blank">***</a>' .. " " .. translate("Configures the list of supported cipher suites, separated by :"))
+o:depends({ [_n("tls")] = true })
+
 o = s:option(Flag, _n("ech"), translate("ECH"))
 o.default = "0"
 o:depends({ [_n("tls")] = true, [_n("flow")] = "", [_n("reality")] = false })
@@ -873,7 +876,7 @@ if not load_shunt_options then
 
 	o1 = s:option(ListValue, _n("preproxy_node"), translate("Preproxy Node"), translate("Only support a layer of proxy."))
 	o1:depends({ [_n("chain_proxy")] = "1", [_n("hysteria2_realms")] = false })
-	o1.template = appname .. "/cbi/nodes_listvalue"
+	o1.template = m:template_path("/cbi/nodes_listvalue")
 	o1.group = {}
 
 	o3 = s:option(Value, _n("outbound_iface"), translate("Outbound Interface"))
@@ -885,7 +888,7 @@ if not load_shunt_options then
 
 	o2 = s:option(ListValue, _n("to_node"), translate("Landing Node"), translate("Only support a layer of proxy."))
 	o2:depends({ [_n("chain_proxy")] = "2", [_n("hysteria2_realms")] = false })
-	o2.template = appname .. "/cbi/nodes_listvalue"
+	o2.template = m:template_path("/cbi/nodes_listvalue")
 	o2.group = {}
 
 	for k1, v1 in pairs(node_list) do
@@ -908,7 +911,7 @@ end
 api.luci_types(arg[1], m, s, type_name, option_prefix)
 
 if load_shunt_options then
-	local current_node = m.uci:get_all(appname, arg[1]) or {}
+	local current_node = m:get(arg[1]) or {}
 	local shunt_lua = loadfile("/usr/lib/lua/luci/model/cbi/passwall/client/include/shunt_options.lua")
 	setfenv(shunt_lua, getfenv(1))(m, s, {
 		node_id = arg[1],

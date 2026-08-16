@@ -1,5 +1,4 @@
 api = require "luci.passwall.api"
-appname = "passwall"
 datatypes = api.datatypes
 local fs = api.fs
 has_singbox = api.finded_com("sing-box")
@@ -10,10 +9,9 @@ local has_chnroute = fs.access("/usr/share/passwall/rules/chnroute")
 
 api.set_default_cbi()
 
-m = Map(appname)
-api.set_apply_on_parse(m)
+m = Map()
 
-m:append(Template(appname .. "/cbi/nodes_listvalue_com"))
+m:appendTemplate("/cbi/nodes_listvalue_com")
 
 local nodes_table = {}
 for _, e in ipairs(api.get_valid_nodes()) do
@@ -51,7 +49,7 @@ socks_table[#socks_table + 1] = {
 	id = tcp_socks_server,
 	remark = tcp_socks_server .. " - " .. translate("TCP Node")
 }
-m.uci:foreach(appname, "socks", function(s)
+m:foreach("socks", function(s)
 	if s.enabled == "1" and s.node then
 		local id, remark
 		for k, n in pairs(nodes_table) do
@@ -95,13 +93,9 @@ local doh_validate = function(self, value, t)
 	return nil, translatef("%s request address","DoH") .. " " .. translate("Format must be:") .. " URL,IP"
 end
 
-m:append(Template(appname .. "/global/status"))
+m:appendTemplate("/global/status")
 
-global_cfgid = (m:get("@global[0]") or {})[".name"] or ""
-
-s = m:section(TypedSection, "global")
-s.anonymous = true
-s.addremove = false
+s = m:section(NamedSection, "@global[0]", "global")
 
 s:tab("Main", translate("Main"))
 
@@ -111,13 +105,13 @@ o.rmempty = false
 
 ---- TCP Node
 o = s:taboption("Main", ListValue, "tcp_node", "<a style='color: red'>" .. translate("TCP Node") .. "</a>")
-o.template = appname .. "/cbi/nodes_listvalue"
+o.template = m:template_path("/cbi/nodes_listvalue")
 o:value("", translate("Close"))
 o.group = {""}
 
 ---- UDP Node
 o = s:taboption("Main", ListValue, "udp_node", "<a style='color: red'>" .. translate("UDP Node") .. "</a>")
-o.template = appname .. "/cbi/nodes_listvalue"
+o.template = m:template_path("/cbi/nodes_listvalue")
 o:value("", translate("Close"))
 o:value("tcp", translate("Same as the tcp node"))
 o.group = {"",""}
@@ -146,15 +140,16 @@ o.write = function(self, section, value)
 	return m:set(section, "udp_node", value)
 end
 
+current_node_id = m:get(s.section, "tcp_node")
+current_node = current_node_id and m:get(current_node_id) or {}
+
 -- Shunt Start
 if (has_singbox or has_xray) and #nodes_table > 0 then
 	if #normal_list > 0 or #iface_list > 0 then
-		current_node_id = m.uci:get(appname, global_cfgid, "tcp_node")
-		current_node = current_node_id and m.uci:get_all(appname, current_node_id) or {}
 		if current_node.protocol == "_shunt" then
 			local shunt_lua = loadfile("/usr/lib/lua/luci/model/cbi/passwall/client/include/shunt_options.lua")
 			setfenv(shunt_lua, getfenv(1))(m, s, {
-				s_cfgid = s:cfgsections()[1],
+				s_cfgid = s.section,
 				node_id = current_node_id,
 				node = current_node,
 				socks_list = socks_list,
@@ -200,12 +195,12 @@ o:depends({ tcp_node = "", ["!reverse"] = true })
 
 -- Node → DNS Depends Settings
 o = s:taboption("Main", DummyValue, "_node_sel_shunt", "")
-o.template = appname .. "/cbi/hidevalue"
+o.template = m:template_path("/cbi/hidevalue")
 o.value = "1"
 o:depends({ tcp_node = "__always__" })
 
 o = s:taboption("Main", DummyValue, "_node_sel_other", "")
-o.template = appname .. "/cbi/hidevalue"
+o.template = m:template_path("/cbi/hidevalue")
 o.value = "1"
 o:depends({ _node_sel_shunt = "1",  ['!reverse'] = true })
 
@@ -371,24 +366,6 @@ if api.is_finded("smartdns") then
 	o:depends({ dns_shunt = "smartdns", smartdns_dns_mode = "socks" })
 	o.cfgvalue = function(self, section)
 		return m:get(section, self.option) or {"tcp://1.1.1.1"}
-	end
-	function o.write(self, section, value)
-		local t = {}
-		local t2 = {}
-		if type(value) == "table" then
-			local x
-			for _, x in ipairs(value) do
-				if x and #x > 0 then
-					if not t2[x] then
-						t2[x] = x
-						t[#t+1] = x
-					end
-				end
-			end
-		else
-			t = { value }
-		end
-		return DynamicList.write(self, section, t)
 	end
 end
 
@@ -601,7 +578,7 @@ o:value("proxy", translate("Proxy"))
 o.default = "proxy"
 
 o = s:taboption("Proxy", DummyValue, "switch_mode", " ")
-o.template = appname .. "/global/proxy"
+o.template = m:template_path("/global/proxy")
 
 ---- Check the transparent proxy component
 local handle = io.popen("lsmod")
@@ -650,11 +627,11 @@ o.default = "0"
 o.rmempty = false
 
 o = s:taboption("log", ListValue, "loglevel", "Sing-Box/Xray " .. translate("Log Level"))
-o.default = "warning"
-o:value("debug")
-o:value("info")
-o:value("warning")
-o:value("error")
+o.default = "warn"
+o:value("debug", "Debug")
+o:value("info", "Info")
+o:value("warn", "Warning")
+o:value("error", "Error")
 
 o = s:taboption("log", Flag, "advanced_log_feature", translate("Advanced log feature"), translate("For professionals only."))
 o.default = "0"
@@ -680,11 +657,11 @@ end
 
 s:tab("faq", "FAQ")
 o = s:taboption("faq", DummyValue, "")
-o.template = appname .. "/global/faq"
+o.template = m:template_path("/global/faq")
 
 s:tab("maintain", translate("Maintain"))
 o = s:taboption("maintain", DummyValue, "")
-o.template = appname .. "/global/backup"
+o.template = m:template_path("/global/backup")
 
 -- [[ Socks Server ]]--
 o = s:taboption("Main", Flag, "socks_enabled", "Socks " .. translate("Main switch"))
@@ -696,52 +673,50 @@ s2.anonymous = true
 s2.addremove = true
 s2.extedit = api.url("socks_config", "%s")
 function s2.create(e, t)
-	local uuid = api.gen_short_uuid(5)
-	uuid = "socks_" .. uuid
-	TypedSection.create(e, uuid)
-	luci.http.redirect(e.extedit:format(uuid))
+	local uid = "socks_" .. api.gen_random_char(5)
+	TypedSection.create(e, uid)
+	luci.http.redirect(e.extedit:format(uid))
 end
 function s2.remove(e, t)
-	local socks = "Socks_" .. t
 	local new_node = ""
 	local node0 = m:get("@nodes[0]") or nil
 	if node0 then
 		new_node = node0[".name"]
 	end
-	if (m:get("@global[0]", "tcp_node") or "") == socks then
+	if (m:get("@global[0]", "tcp_node") or "") == t then
 		m:set('@global[0]', "tcp_node", new_node)
 	end
-	if (m:get("@global[0]", "udp_node") or "") == socks then
+	if (m:get("@global[0]", "udp_node") or "") == t then
 		m:set('@global[0]', "udp_node", new_node)
 	end
-	m.uci:foreach(appname, "acl_rule", function(s)
-		if s["tcp_node"] and s["tcp_node"] == socks then
+	m:foreach("acl_rule", function(s)
+		if s["tcp_node"] and s["tcp_node"] == t then
 			m:set(s[".name"], "tcp_node", "default")
 		end
-		if s["udp_node"] and s["udp_node"] == socks then
+		if s["udp_node"] and s["udp_node"] == t then
 			m:set(s[".name"], "udp_node", "default")
 		end
 	end)
-	m.uci:foreach(appname, "nodes", function(s)
+	m:foreach("nodes", function(s)
 		local list_name = s["urltest_node"] and "urltest_node" or (s["balancing_node"] and "balancing_node")
 		if list_name then
-			local nodes = m.uci:get_list(appname, s[".name"], list_name)
+			local nodes = m.uci:get_list(api.c_config, s[".name"], list_name)
 			if nodes then
 				local changed = false
 				local new_nodes = {}
 				for _, node in ipairs(nodes) do
-					if node ~= socks then
+					if node ~= t then
 						table.insert(new_nodes, node)
 					else
 						changed = true
 					end
 				end
 				if changed then
-					m.uci:set_list(appname, s[".name"], list_name, new_nodes)
+					api.uci_set_c(s[".name"], list_name, new_nodes)
 				end
 			end
 		end
-		if s["fallback_node"] == socks then
+		if s["fallback_node"] == t then
 			m:del(s[".name"], "fallback_node")
 		end
 	end)
@@ -760,7 +735,7 @@ o.default = 1
 o.rmempty = false
 
 o = s2:option(ListValue, "node", translate("Socks Node"))
-o.template = appname .. "/cbi/nodes_listvalue"
+o.template = m:template_path("/cbi/nodes_listvalue")
 o.group = {}
 
 o = s2:option(DummyValue, "now_node", translate("Current Node"))
@@ -776,7 +751,7 @@ o.cfgvalue = function(_, n)
 end
 
 local n = 1
-m.uci:foreach(appname, "socks", function(s)
+m:foreach("socks", function(s)
 	if s[".name"] == section then
 		return false
 	end
@@ -838,10 +813,6 @@ for k, v in pairs(nodes_table) do
 	end
 end
 
-local footer = Template(appname .. "/global/footer")
-footer.api = api
-footer.global_cfgid = global_cfgid
-footer.shunt_list = api.jsonc.stringify(shunt_list)
-m:append(footer)
+m:appendTemplate("/global/footer", {shunt_list = api.jsonc.stringify(shunt_list)})
 
 return api.return_map(m)
