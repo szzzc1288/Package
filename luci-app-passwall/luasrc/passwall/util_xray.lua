@@ -515,6 +515,12 @@ function gen_config_server(node)
 					u.email = user.username
 					u.auth = user.password
 				end
+				if node.protocol == "wireguard" then
+					u.publicKey = user.wireguard_public_key
+					u.preSharedKey = user.wireguard_pre_shared_key
+					u.keepAlive = 0
+					u.allowedIPs = user.allowed_ips
+				end
 				users[#users + 1] = u
 			end
 		end
@@ -561,11 +567,19 @@ function gen_config_server(node)
 			version = 2,
 			users = users
 		}
-	elseif node.protocol == "dokodemo-door" then
+	elseif node.protocol == "tunnel" then
 		settings = {
-			network = node.d_protocol,
-			address = node.d_address,
-			port = tonumber(node.d_port)
+			allowedNetwork = node.d_protocol,
+			rewriteAddress = node.d_address,
+			rewritePort = tonumber(node.d_port)
+		}
+	elseif node.protocol == "wireguard" then
+		settings = {
+			secretKey = node.wireguard_private_key,
+			--address = node.wireguard_local_address,
+			--noKernelTun = node.wireguard_system_interface ~= "1" and true or false,
+			mtu = tonumber(node.wireguard_mtu or 1420),
+			peers = users
 		}
 	end
 
@@ -855,8 +869,7 @@ function gen_config(var)
 	local server_host = var["server_host"]
 	local server_port = var["server_port"]
 	local tcp_proxy_way = var["tcp_proxy_way"] or "redirect"
-	local tcp_redir_port = var["tcp_redir_port"]
-	local udp_redir_port = var["udp_redir_port"]
+	local redir_port = var["redir_port"]
 	local local_socks_address = var["local_socks_address"] or "0.0.0.0"
 	local local_socks_port = var["local_socks_port"]
 	local local_socks_username = var["local_socks_username"]
@@ -1054,7 +1067,7 @@ function gen_config(var)
 				blc_nodes = _node.balancing_node
 			end
 
-			api.log("  - 加载 Xray 负载均衡 节点【" .. (_node.remarks or "") .. "】，子节点数量：" .. #(blc_nodes or {}))
+			-- api.log("  - 加载 Xray 负载均衡 节点【" .. (_node.remarks or "") .. "】，子节点数量：" .. #(blc_nodes or {}))
 
 			local valid_nodes = {}
 			for i = 1, #(blc_nodes or {}) do
@@ -1217,8 +1230,8 @@ function gen_config(var)
 							tag = in_tag,
 							listen = "127.0.0.1",
 							port = new_port,
-							protocol = "dokodemo-door",
-							settings = {network = "tcp,udp", address = to_node.address, port = tonumber(to_node.port)}
+							protocol = "tunnel",
+							settings = {allowedNetwork = "tcp,udp", rewriteAddress = to_node.address, rewritePort = tonumber(to_node.port)}
 						})
 						if to_node.tls_serverName == nil then
 							to_node.tls_serverName = to_node.address
@@ -1434,11 +1447,9 @@ function gen_config(var)
 					if e["inbound"] and e["inbound"] ~= "" then
 						inbound_tag = {}
 						if e["inbound"]:find("tproxy") then
-							if tcp_redir_port then
-								table.insert(inbound_tag, "tcp_redir")
-							end
-							if udp_redir_port then
-								table.insert(inbound_tag, "udp_redir")
+							if redir_port then
+								table.insert(inboundTag, "tcp_redir")
+								table.insert(inboundTag, "udp_redir")
 							end
 						end
 						if e["inbound"]:find("socks") then
@@ -1571,13 +1582,14 @@ function gen_config(var)
 			end
 		end
 
-		if tcp_redir_port or udp_redir_port then
+		if redir_port then
 			local inbound = {
-				protocol = "dokodemo-door",
-				settings = {network = "tcp,udp", followRedirect = true},
+				port = tonumber(redir_port),
+				protocol = "tunnel",
+				settings = {allowedNetwork = "tcp,udp", followRedirect = true},
 				streamSettings = {sockopt = {tproxy = "tproxy"}},
 				sniffing = {
-					enabled = (xray_settings.sniffing_override_dest == "1") or (node and node.protocol == "_shunt") or false
+					enabled = xray_settings.sniffing_override_dest == "1" or node.protocol == "_shunt"
 				}
 			}
 			if inbound.sniffing.enabled == true then
@@ -1597,22 +1609,16 @@ function gen_config(var)
 				end
 			end
 
-			if tcp_redir_port then
-				local tcp_inbound = api.clone(inbound)
-				tcp_inbound.tag = "tcp_redir"
-				tcp_inbound.settings.network = "tcp"
-				tcp_inbound.port = tonumber(tcp_redir_port)
-				tcp_inbound.streamSettings.sockopt.tproxy = tcp_proxy_way
-				table.insert(inbounds, tcp_inbound)
-			end
+			local tcp_inbound = api.clone(inbound)
+			tcp_inbound.tag = "tcp_redir"
+			tcp_inbound.settings.allowedNetwork = "tcp"
+			tcp_inbound.streamSettings.sockopt.tproxy = tcp_proxy_way
+			table.insert(inbounds, tcp_inbound)
 
-			if udp_redir_port then
-				local udp_inbound = api.clone(inbound)
-				udp_inbound.tag = "udp_redir"
-				udp_inbound.settings.network = "udp"
-				udp_inbound.port = tonumber(udp_redir_port)
-				table.insert(inbounds, udp_inbound)
-			end
+			local udp_inbound = api.clone(inbound)
+			udp_inbound.tag = "udp_redir"
+			udp_inbound.settings.allowedNetwork = "udp"
+			table.insert(inbounds, udp_inbound)
 		end
 	end
 
@@ -1776,11 +1782,10 @@ function gen_config(var)
 			table.insert(inbounds, {
 				listen = "127.0.0.1",
 				port = tonumber(dns_listen_port),
-				protocol = "dokodemo-door",
+				protocol = "tunnel",
 				tag = "dns-in",
 				settings = {
-					address = "0.0.0.0",
-					network = "tcp,udp"
+					allowedNetwork = "tcp,udp"
 				}
 			})
 
