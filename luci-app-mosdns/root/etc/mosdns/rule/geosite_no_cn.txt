@@ -1822,6 +1822,7 @@ api.ai
 api.moomoobull.com
 api.news
 api.palworldgame.com
+api.shuaiapi.com
 apiary.io
 apiauto.ru
 apibay.org
@@ -11128,6 +11129,7 @@ hiporn.net
 hippyhillscomix.com
 hipzoom.net
 hiroshimabank.co.jp
+historylines.net
 historyofdota.com
 historyofdota.net
 historyofdota.org
@@ -13644,6 +13646,7 @@ kitakyushubank.co.jp
 kiwi.jp
 kiwi.kz
 kiwibrowser.com
+kiwix.org
 kiyobank.co.jp
 kk-whys.co.jp
 kk.stream
@@ -14765,6 +14768,7 @@ mcdonalds.se
 mcdonaldsapps.com
 mcdonaldsarabia.com
 mcdonaldsparties.co.nz
+mceindex.com
 mcisco.com
 mcpeaceofmind.com
 mcrouter.net
@@ -24872,6 +24876,7 @@ x18r.com
 x3guide.com
 x3vid.com
 x6av.com
+x86.fr
 x99av.com
 xamarin.com
 xandr.com
