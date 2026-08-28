@@ -772,6 +772,7 @@ adguard.info
 adguard.io
 adguard.org
 adguardaccount.com
+adguardaccount.net
 adguardcdn.com
 adguardvpn.com
 adhelpnews.com
@@ -1802,6 +1803,7 @@ aoc.cat
 aodahl.com
 aofriend.com
 aokwholesale.net
+aolcdn.com
 aomedia.org
 aomiwang.com
 aorus.com
@@ -10630,6 +10632,7 @@ h-top.supertop-100.com
 h-webtoon.com
 h0930.com
 h18ani1.vip
+h264.io
 h2o.ai
 h2porn.com
 h528.com
@@ -16495,6 +16498,7 @@ nftstatic.com
 nftstorage.link
 nga.mil
 ngeo.com
+ngfiles.com
 nginx.com
 nginx.org
 nginxconfig.io
@@ -17499,6 +17503,7 @@ ourshdtv.com
 ourshemales.com
 oursteps.com.au
 ourtv.hk
+ouryahoo.com
 out-app-purchase.com
 outbound.io
 outdoorpublicsex.com
@@ -25622,6 +25627,7 @@ yahooapis.com
 yahoodns.net
 yahoofinance.com
 yahoohealth.com
+yahooinc.com
 yahoomusic.com
 yahoosandbox.com
 yahoosportsbook.com
