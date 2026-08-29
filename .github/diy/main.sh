@@ -29,7 +29,7 @@ git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall-package
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff && rm -rf luci-app-poweroff/.git
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 git clone --depth 1 https://github.com/QiuSimons/openwrt-mos openwrt-mos && mv -n openwrt-mos/{dat,*mosdns,v2ray-geodata} ./; rm -rf openwrt-mos
-git clone --depth 1 https://github.com/fw876/helloworld && mv -n helloworld/{luci-app-ssr-plus,tuic-client,shadow-tls,redsocks2,lua-neturl,dns2tcp,v2ray-core,trojan,dns2socks-rust,gn} ./ ; rm -rf helloworld
+git clone --depth 1 https://github.com/fw876/helloworld && mv -n helloworld/{dns2socks-rust,dns2tcp,dnsproxy,gn,ipt2socks-rs,lua-neturl,luci-app-ssr-plus,mihomo,redsocks2,shadowsocks-libev,tuic-client,v2ray-core,v2raya} ./ ; rm -rf helloworld
 git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packages/luci-app-bypass kwrt-packages/luci-app-fileassistant ./ ; rm -rf kwrt-packages
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-opentopd && rm -rf luci-theme-opentopd/.git
 
