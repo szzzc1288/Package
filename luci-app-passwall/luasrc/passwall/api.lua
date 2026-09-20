@@ -163,12 +163,16 @@ function sh_uci_commit(config)
 	exec_call(string.format("uci -q commit %s", config))
 end
 
+function del_cache_var(key)
+	sys.call(string.format('. /usr/share/passwall2/utils.sh ; del_cache_var "%s"', key))
+end
+
 function set_cache_var(key, val)
-	sys.call(string.format('. /usr/share/passwall/utils.sh ; set_cache_var %s "%s"', key, val))
+	sys.call(string.format('. /usr/share/passwall/utils.sh ; set_cache_var "%s" "%s"', key, val))
 end
 
 function get_cache_var(key)
-	local val = sys.exec(string.format('. /usr/share/passwall/utils.sh ; echo -n $(get_cache_var %s)', key))
+	local val = sys.exec(string.format('. /usr/share/passwall/utils.sh ; echo -n $(get_cache_var "%s")', key))
 	if val == "" then val = nil end
 	return val
 end
@@ -1538,11 +1542,18 @@ function set_type_cbi(s)
 		obj.option_prefix = s_self.option_prefix
 		obj.option = s_self.option_prefix .. option
 		obj.cfgvalue = function(self, section)
+			local v
 			if self.rewrite_option then
-				return self.map:get(section, self.rewrite_option)
+				v = self.map:get(section, self.rewrite_option)
 			else
-				return self.map:get(section, self.config_option)
+				v = self.map:get(section, self.config_option)
 			end
+			if util.instanceof(self, cbi.MultiValue) then
+				if v and self.cast == "table" then
+					return table.concat(v, " ")
+				end
+			end
+			return v
 		end
 		obj.write = function(self, section, value)
 			if s1.fields["type"]:formvalue(s_self.section) == s_self.type_name then
@@ -1553,6 +1564,21 @@ function set_type_cbi(s)
 						new_t = table_remove_duplicates(value)
 					else
 						new_t = { value }
+					end
+					if self.cast == "string" then
+						new_val = table.concat(new_t, " ")
+					else
+						new_val = new_t
+					end
+				end
+				if util.instanceof(self, cbi.MultiValue) then
+					local new_t = {}
+					if type(value) == "table" then
+						new_t = table_remove_duplicates(value)
+					else
+						string.gsub(value, '[^' .. " " .. ']+', function(v)
+							new_t[#new_t + 1] = v
+						end)
 					end
 					if self.cast == "string" then
 						new_val = table.concat(new_t, " ")
@@ -1615,6 +1641,7 @@ end
 function type_cbi_section(s, s2)
 	for i, v in ipairs(s2.children) do
 		local o = s2.children[i]
+		o.section = s
 		s:append(o)
 		s.fields[o.option] = o
 	end
@@ -2071,4 +2098,12 @@ function gen_wireguard_key()
 			public_key = public_key
 		}
 	end
+end
+
+function get_socks_port_by_cache(node_id)
+	return get_cache_var("node_%s_socks_port" % { node_id })
+end
+
+function set_socks_port_to_cache(node_id, v)
+	set_cache_var("node_%s_socks_port" % { node_id }, v)
 end
