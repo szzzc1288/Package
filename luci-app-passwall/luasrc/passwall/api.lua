@@ -185,7 +185,7 @@ end
 function exec_call(cmd)
 	math.randomseed(os.time())
 	local tag = "\x01__RC__" .. tostring(math.random(100000, 999999)) .. "\x01"
-	local f = io.popen('(' .. cmd .. '); printf "\\n' .. tag .. '%d" "$?"')
+	local f = io.popen('(' .. cmd .. ') 2>&1; printf "\\n' .. tag .. '%d" "$?"')
 	local out = f:read("*a") or ""
 	f:close()
 	local rc = out:match(tag .. "(%d+)%s*$")
@@ -229,6 +229,24 @@ function UrlDecode(szText)
 	return szText and szText:gsub("%+", " "):gsub("%%(%x%x)", function(h)
 		return string.char(tonumber(h, 16))
 	end) or nil
+end
+
+-- 计算文件 MD5
+function md5_file(path)
+	if type(path) ~= "string" then return "" end
+	local quoted = "'" .. path:gsub("'", "'\\''") .. "'"
+	local out = sys.exec("md5sum " .. quoted)
+	if not out then return "" end
+	return out:sub(1, 32)
+end
+
+-- 计算字符串 MD5
+function md5_string(str)
+	if type(str) ~= "string" then return "" end
+	local quoted = "'" .. str:gsub("'", "'\\''") .. "'"
+	local out = sys.exec("printf '%s' " .. quoted .. " | md5sum")
+	if not out then return "" end
+	return out:sub(1, 32)
 end
 
 --提取URL中的域名和端口(no ip)
@@ -378,9 +396,10 @@ function repeat_exist(table, value)
 end
 
 function remove(...)
-	for index, value in ipairs({...}) do
-		if value and #value > 0 and value ~= "/" then
-			sys.call(string.format("rm -rf %s", value))
+	for i = 1, select("#", ...) do
+		local value = select(i, ...)
+		if type(value) == "string" and #value > 0 and value ~= "/" then
+			sys.call(string.format("rm -rf -- %s", value))
 		end
 	end
 end
@@ -818,7 +837,7 @@ function get_bin_version_cache(file, cmd)
 	sys.call("mkdir -p " .. CACHE_PATH)
 	if fs.access(file) then
 		chmod_755(file)
-		local md5 = sys.exec("echo -n $(md5sum " .. file .. " | awk '{print $1}')")
+		local md5 = md5_file(file)
 		if fs.access(CACHE_PATH .. "/" .. md5) then
 			return sys.exec("echo -n $(cat %s)" % { CACHE_PATH .. "/" .. md5 })
 		else
@@ -1113,10 +1132,10 @@ local default_file_tree = {
 }
 
 local function get_api_json(url)
-	local gh_proxy = uci_get_c("@global_app[0]", "github_proxy") or "0"
+	local gh_proxy = uci_get_c("@global_app[0]", "gh_proxy_url") or ""
 	local return_code, content
-	if gh_proxy == "1" then
-		url = "https://gh-proxy.org/" .. url
+	if gh_proxy ~= "" then
+		url = gh_proxy .. url
 		return_code, content = curl_base(url, nil, curl_args)
 	else
 		return_code, content = curl_auto(url, nil, curl_args)
@@ -1213,7 +1232,7 @@ function to_check(arch, app_name)
 	}
 end
 
-function to_download(app_name, url, size)
+function to_download(app_name, url, size, task_id)
 	local result = check_path(app_name)
 	if result.code ~= 0 then
 		return result
@@ -1223,9 +1242,15 @@ function to_download(app_name, url, size)
 		return {code = 1, error = i18n.translate("Download url is required.")}
 	end
 
-	sys.call("/bin/rm -f /tmp/".. app_name .."_download.*")
+	remove("/tmp/" .. app_name .. "_download.*")
 
-	local tmp_file = trim(util.exec("mktemp -u -t ".. app_name .."_download.XXXXXX"))
+	local tmp_file
+	if task_id and task_id:match("^[%w_-]+$") then
+		tmp_file = "/tmp/" .. app_name .. "_download." .. task_id
+		remove(tmp_file)
+	else
+		tmp_file = trim(util.exec("mktemp -u -t " .. app_name .. "_download.XXXXXX"))
+	end
 
 	if size then
 		local kb1 = get_free_space("/tmp")
@@ -1237,10 +1262,10 @@ function to_download(app_name, url, size)
 	local _curl_args = clone(curl_args)
 	table.insert(_curl_args, "--speed-limit 51200 --speed-time 15 --max-time 300")
 
-	local gh_proxy = uci_get_c("@global_app[0]", "github_proxy") or "0"
+	local gh_proxy = uci_get_c("@global_app[0]", "gh_proxy_url") or ""
 	local return_code, result
-	if gh_proxy == "1" then
-		url = "https://gh-proxy.org/" .. url
+	if gh_proxy ~= "" then
+		url = gh_proxy .. url
 		return_code, result = curl_base(url, tmp_file, _curl_args)
 	else
 		return_code, result = curl_auto(url, tmp_file, _curl_args)
@@ -1256,6 +1281,23 @@ function to_download(app_name, url, size)
 	end
 
 	return {code = 0, file = tmp_file, zip = com[app_name].zipped }
+end
+
+function to_download_progress(app_name, task_id, total_size)
+	if not com[app_name] or type(task_id) ~= "string" or not task_id:match("^[%w_-]+$") then
+		return {code = 1, error = i18n.translate("Invalid download task.")}
+	end
+
+	total_size = tonumber(total_size) or 0
+	local tmp_file = "/tmp/" .. app_name .. "_download." .. task_id
+	local downloaded = tonumber(fs.stat(tmp_file, "size")) or 0
+	local percent
+	if total_size > 0 then
+		-- The download request has not completed yet, so leave 100% for its success callback.
+		percent = math.min(99, math.floor(downloaded * 100 / total_size))
+	end
+
+	return {code = 0, downloaded = downloaded, total = total_size, percent = percent}
 end
 
 function to_extract(app_name, file, subfix)
@@ -1287,7 +1329,7 @@ function to_extract(app_name, file, subfix)
 		end
 	end
 
-	sys.call("/bin/rm -rf /tmp/".. app_name .."_extract.*")
+	remove("/tmp/" .. app_name .. "_extract.*")
 
 	local new_file_size = get_file_space(file)
 	local tmp_free_size = get_free_space("/tmp")
@@ -1327,20 +1369,20 @@ function to_move(app_name,file)
 
 	local app_path = result.app_path
 	local bin_path = file
-	local cmd_rm_tmp = "/bin/rm -rf /tmp/" .. app_name .. "_download.*"
+	local rm_tmp = "/tmp/" .. app_name .. "_download.*"
 	if fs.stat(file, "type") == "dir" then
 		bin_path = file .. "/" .. com[app_name].name:lower()
-		cmd_rm_tmp = "/bin/rm -rf /tmp/" .. app_name .. "_extract.*"
+		rm_tmp = "/tmp/" .. app_name .. "_extract.*"
 	end
 
 	if not file or file == "" then
-		sys.call(cmd_rm_tmp)
+		remove(rm_tmp)
 		return {code = 1, error = i18n.translate("Client file is required.")}
 	end
 
 	local new_version = get_app_version(app_name, bin_path)
 	if new_version == "" then
-		sys.call(cmd_rm_tmp)
+		remove(rm_tmp)
 		return {
 			code = 1,
 			error = i18n.translate("The client file is not suitable for current device.") .. app_name .. "__" .. bin_path
@@ -1362,14 +1404,14 @@ function to_move(app_name,file)
 	if final_dir_free_size > 0 then
 		final_dir_free_size = final_dir_free_size + old_app_size
 		if new_app_size > final_dir_free_size then
-			sys.call(cmd_rm_tmp)
+			remove(rm_tmp)
 			return {code = 1, error = i18n.translatef("%s not enough space.", final_dir)}
 		end
 	end
 
 	result = exec("/bin/mv", { "-f", bin_path, app_path }, nil, command_timeout) == 0
 
-	sys.call(cmd_rm_tmp)
+	remove(rm_tmp)
 	if flag == 0 then
 		sys.call("/etc/init.d/passwall restart >/dev/null 2>&1 &")
 	end
@@ -1406,10 +1448,10 @@ end
 function to_check_self()
 	local url = "https://raw.githubusercontent.com/Openwrt-Passwall/openwrt-passwall/main/luci-app-passwall/Makefile"
 	local tmp_file = "/tmp/passwall_makefile"
-	local gh_proxy = uci_get_c("@global_app[0]", "github_proxy") or "0"
+	local gh_proxy = uci_get_c("@global_app[0]", "gh_proxy_url") or ""
 	local return_code, result
-	if gh_proxy == "1" then
-		url = "https://gh-proxy.org/" .. url
+	if gh_proxy ~= "" then
+		url = gh_proxy .. url
 		return_code, result = curl_base(url, tmp_file, curl_args)
 	else
 		return_code, result = curl_auto(url, tmp_file, curl_args)

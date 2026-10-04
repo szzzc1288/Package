@@ -4767,6 +4767,7 @@ c-ij.com
 c-msedge.net
 c-span.org
 c-spanvideo.org
+c.go-mpulse.net
 c.mi.com
 c0930.com
 c2cx.com
@@ -5544,6 +5545,7 @@ classymomsex.com
 clau.de
 claude.ai
 claude.com
+claude.dev
 claudemcpclient.com
 claudemcpcontent.com
 claudeusercontent.com
@@ -9514,6 +9516,7 @@ futustatic.com
 fututrade.com
 fututrustee.com
 fuxporn.com
+fuyin116.com
 fuzokudx.com
 fw.cm
 fxcm-chinese.com
@@ -11634,6 +11637,7 @@ huanyuju.com
 huaren.us
 huarenav.com
 huarenporn.com
+huarun.win
 huashangnews.com
 huashundg.com
 huati.cc
@@ -14916,6 +14920,7 @@ messytube.com
 met-nude.com
 meta.ai
 meta.com
+metaaivm.com
 metabora.io
 metabrainz.org
 metacloud.com
@@ -15925,6 +15930,7 @@ musashinobank.co.jp
 muscache.com
 muscdn.com
 musclegirlflix.com
+muse.ai
 mushroomtrack.com
 mushymush.tv
 musical.ly
@@ -17392,6 +17398,7 @@ openart.ai
 openbook.org.tw
 opencas.io
 openclaw.ai
+opencode.ai
 opencollective.com
 opencreate.org
 opencritic.com
@@ -23311,6 +23318,7 @@ vaultify.com
 vaultify.info
 vaultify.net
 vaultproject.io
+vava8.com
 vbcdn.com
 vbcdn.net
 vbejeyv.shop
@@ -26573,6 +26581,8 @@ full:foxnewsplayer-a.akamaihd.net
 full:gamedownloads-rockstargames-com.akamaized.net
 full:gamer-cds.cdn.hinet.net
 full:gamer2-cds.cdn.hinet.net
+full:geminiweb-pa.clients.google.com
+full:geminiweb-pa.clients6.google.com
 full:gigabyte2.azureedge.net
 full:github-api.arkoselabs.com
 full:github-cloud.s3.amazonaws.com

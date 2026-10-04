@@ -918,7 +918,6 @@ socks_node_switch() {
 }
 
 clean_crontab() {
-	[ -f "${LOCK_PATH}/${CONFIG}_cron.lock" ] && return
 	touch /etc/crontabs/root
 	#sed -i "/${CONFIG}/d" /etc/crontabs/root >/dev/null 2>&1
 	sed -i "/$(echo "/etc/init.d/${CONFIG}" | sed 's#\/#\\\/#g')/d" /etc/crontabs/root >/dev/null 2>&1
@@ -931,14 +930,15 @@ clean_crontab() {
 
 start_crontab() {
 	local update_loop
+	local setsid_cmd=""
+	command -v setsid >/dev/null 2>&1 && setsid_cmd="setsid "
 
 	if [ "$ENABLED_DEFAULT_ACL" = "1" ] || [ "$ENABLED_ACLS" = "1" ]; then
 		local start_daemon=$(config_n_get @global_delay[0] start_daemon 0)
 		[ "$start_daemon" = "1" ] && { $APP_PATH/monitor.sh > /dev/null 2>&1 & }
 	fi
 
-	if [ -f "${LOCK_PATH}/${CONFIG}_cron.lock" ]; then
-		rm -f "${LOCK_PATH}/${CONFIG}_cron.lock"
+	if [ "$1" = "cron" ]; then
 		echolog "当前为计划任务自动运行，不重新配置定时任务。"
 		return
 	fi
@@ -978,7 +978,7 @@ start_crontab() {
 		if [ "$week" = "8" ]; then
 			update_loop=1
 		else
-			echo "$svr_t /etc/init.d/$CONFIG $action > /dev/null 2>&1 &" >>/etc/crontabs/root
+			echo "$svr_t ${setsid_cmd}/etc/init.d/$CONFIG $action cron > /dev/null 2>&1 &" >>/etc/crontabs/root
 		fi
 		echolog "$logmsg"
 	}
@@ -998,7 +998,7 @@ start_crontab() {
 		if [ "$rules_update_week_mode" = "8" ]; then
 			update_loop=1
 		else
-			echo "$rule_t lua $APP_PATH/rule_update.lua log all cron > /dev/null 2>&1 &" >>/etc/crontabs/root
+			echo "$rule_t ${setsid_cmd}lua $APP_PATH/rule_update.lua log all cron > /dev/null 2>&1 &" >>/etc/crontabs/root
 		fi
 		echolog "配置定时任务：自动更新规则。"
 	fi
@@ -1026,7 +1026,7 @@ start_crontab() {
 			if [ "$sub_update_week_mode" = "8" ]; then
 				update_loop=1
 			else
-				echo "$sub_t lua $APP_PATH/subscribe.lua start $cfgids cron > /dev/null 2>&1 &" >>/etc/crontabs/root
+				echo "$sub_t ${setsid_cmd}lua $APP_PATH/subscribe.lua start $cfgids cron > /dev/null 2>&1 &" >>/etc/crontabs/root
 			fi
 		done
 		rm -rf "$TMP_SUB_PATH"
@@ -1046,10 +1046,26 @@ start_crontab() {
 }
 
 stop_crontab() {
-	[ -f "${LOCK_PATH}/${CONFIG}_cron.lock" ] && return
+	[ "$1" = "cron" ] && return
 	clean_crontab
 	/etc/init.d/cron restart
 	#echolog "清除定时执行命令。"
+}
+
+restart_smartdns() {
+	rm -rf /tmp/smartdns.cache
+	/etc/init.d/smartdns reload >/dev/null 2>&1
+}
+
+del_smartdns_conf() {
+	command -v smartdns >/dev/null 2>&1 || return
+	rm -rf "/tmp/etc/smartdns/${CONFIG}.conf"
+	local custom_conf="/etc/smartdns/custom.conf"
+	if [ -f "$custom_conf" ] && grep -q "${CONFIG}" "$custom_conf"; then
+		sed -i "/${CONFIG}/d" "$custom_conf" >/dev/null 2>&1
+		rm -rf /tmp/smartdns.cache
+		/etc/init.d/smartdns reload >/dev/null 2>&1
+	fi
 }
 
 start_dns() {
@@ -1256,7 +1272,8 @@ start_dns() {
 				-USE_DIRECT_LIST "${USE_DIRECT_LIST}" -USE_PROXY_LIST "${USE_PROXY_LIST}" -USE_BLOCK_LIST "${USE_BLOCK_LIST}" -USE_GFW_LIST "${USE_GFW_LIST}" -CHN_LIST "${CHN_LIST}" \
 				-NODE ${NODE} -DEFAULT_PROXY_MODE "${TCP_PROXY_MODE}" -NO_PROXY_IPV6 ${FILTER_PROXY_IPV6:-0} -NFTFLAG ${nftflag:-0} \
 				-SUBNET ${subnet_ip:-0} -NO_LOGIC_LOG ${NO_LOGIC_LOG:-0}
-			source $APP_PATH/helper_smartdns.sh restart
+
+			restart_smartdns
 
 			USE_DEFAULT_DNS="chinadns_ng"
 		else
@@ -1701,7 +1718,7 @@ start() {
 		}
 	fi
 
-	start_crontab
+	start_crontab $1
 	echolog "运行完成！\n"
 
 	[ "$ENABLED" = 1 ] && [ "$1" = "boot" ] && {
@@ -1738,8 +1755,8 @@ stop() {
 	unset V2RAY_LOCATION_ASSET
 	unset XRAY_LOCATION_ASSET
 	unset SS_SYSTEM_DNS_RESOLVER_FORCE_BUILTIN
-	stop_crontab
-	source $APP_PATH/helper_smartdns.sh del
+	stop_crontab $1
+	del_smartdns_conf
 	rm -rf $GLOBAL_DNSMASQ_CONF
 	rm -rf $GLOBAL_DNSMASQ_CONF_PATH
 	[ "1" = "1" ] && {
@@ -1763,6 +1780,12 @@ stop() {
 	rm -f ${LOCK_PATH}/${CONFIG}_socks_auto_switch*
 	rm -f ${LOCK_PATH}/${CONFIG}_lease2hosts*
 	rm -f ${LOCK_PATH}/${CONFIG}_monitor*
+	if ! busybox pgrep -af "${CONFIG}/" | grep -q '/subscribe\.lua'; then
+		rm -f "${LOCK_PATH}/${CONFIG}_subscribe.lock"
+	fi
+	if ! busybox pgrep -af "${CONFIG}/" | grep -q '/rule_update\.lua'; then
+		rm -f "${LOCK_PATH}/${CONFIG}_rule_update.lock"
+	fi
 	echolog "清空并关闭相关程序和缓存完成。"
 	exit 0
 }
@@ -1881,6 +1904,6 @@ start)
 	start "$@"
 	;;
 stop)
-	stop
+	stop "$@"
 	;;
 esac
