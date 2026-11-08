@@ -1,15 +1,14 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-05 07:54+0000\n"
-"Last-Translator: Kövecses József <kovecses@users.noreply.hosted.weblate.org>"
-"\n"
+"PO-Revision-Date: 2025-05-08 13:02+0000\n"
+"Last-Translator: hmzs <hmzs@1szer1.hu>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/openwrt/"
 "luciapplicationsttyd/hu/>\n"
 "Language: hu\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.11.1.dev0\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:65
 msgid "Accept only one client and exit on disconnection"
@@ -21,23 +20,23 @@ msgstr "Példány hozzáadása"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:49
 msgid "Allow URL args"
-msgstr "URL-argumentumok engedélyezése"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:49
 msgid "Allow client to send command line arguments in URL (eg: %s)"
-msgstr "A kliens parancssori argumentumokat küldhet az URL-ben (pl. %s)"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:20
 msgid "Bind to UNIX domain socket instead of IP port"
-msgstr "Kötés UNIX-tartománysockethez IP-port helyett"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:59
 msgid "Check origin"
-msgstr "Eredet ellenőrzése"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:53
 msgid "Client option"
-msgstr "Kliensbeállítás"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:89
 msgid "Command"
@@ -45,19 +44,19 @@ msgstr "Parancs"
 
 #: applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json:23
 msgid "Config"
-msgstr "Beállítások"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:37
 msgid "Credential"
-msgstr "Hitelesítő adat"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:37
 msgid "Credential for Basic Authentication"
-msgstr "Hitelesítő adat az alapszintű (Basic) hitelesítéshez"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:67
 msgid "Custom index.html path"
-msgstr "Egyéni index.html elérési útja"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:82
 msgid "Debug"
@@ -65,11 +64,11 @@ msgstr "Hibakeresés"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:51
 msgid "Do not allow clients to write to the TTY"
-msgstr "A kliensek nem írhatnak a TTY-ra"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:59
 msgid "Do not allow websocket connection from different origin"
-msgstr "Más eredetről érkező websocket-kapcsolatok tiltása"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:17
 msgid "Enable"
@@ -77,7 +76,7 @@ msgstr "Engedélyezés"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:69
 msgid "Enable IPv6 support"
-msgstr "IPv6-támogatás engedélyezése"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:71
 msgid "Enable SSL"
@@ -97,7 +96,7 @@ msgstr "Csoportazonosító"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:43
 msgid "Group id to run with"
-msgstr "A futtatáshoz használt csoportazonosító"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:69
 msgid "IPv6"
@@ -105,37 +104,35 @@ msgstr "IPv6"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:67
 msgid "Index"
-msgstr "Index"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:86
 msgid "Info"
-msgstr "Információ"
+msgstr "Infó"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:27
 msgid "Interface"
-msgstr "Interfész"
+msgstr "Csatoló"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:94
 msgid "Make sure to set up another authorization method."
-msgstr "Gondoskodjon más hitelesítési módszer beállításáról."
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:61
 msgid "Max clients"
-msgstr "Kliensek legnagyobb száma"
+msgstr "Max. ügyfélszám"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:61
 msgid "Maximum clients to support (default: 0, no limit)"
-msgstr "A támogatott kliensek legnagyobb száma (alapértelmezett: 0, korlátlan)"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:27
 msgid "Network interface to bind (eg: eth0)"
-msgstr "A kötéshez használt hálózati interfész (pl. eth0)"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:93
 msgid "Note that reverse proxied pages is NOT protected by password like LuCI."
 msgstr ""
-"Vegye figyelembe, hogy a fordított proxyn keresztül elérhető oldalakat a "
-"LuCI-val ellentétben NEM védi jelszó."
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:85
 msgid "Notice"
@@ -143,12 +140,11 @@ msgstr "Értesítés"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:65
 msgid "Once"
-msgstr "Egyszeri"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:92
 msgid "Override URL in Terminal tab. For use with reverse proxy."
 msgstr ""
-"Az URL felülbírálása a Terminál lapon. Fordított proxyval való használathoz."
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:22
 msgid "Port"
@@ -157,16 +153,12 @@ msgstr "Port"
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:22
 msgid "Port to listen (default: 7681, use `0` for random port)"
 msgstr ""
-"Figyelési port (alapértelmezett: 7681, véletlenszerű porthoz használja a `0` "
-"értéket)"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/term.js:15
 msgid ""
 "Random ttyd port (port=0) is not supported.<br />Change to a fixed port and "
 "try again."
 msgstr ""
-"A véletlenszerű ttyd-port (port=0) nem támogatott.<br />Állítson be "
-"rögzített portot, és próbálja újra."
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:51
 msgid "Read-only"
@@ -178,35 +170,35 @@ msgstr "SSL"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:79
 msgid "SSL CA file path for client certificate verification"
-msgstr "SSL CA-fájl elérési útja a klienstanúsítványok ellenőrzéséhez"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:79
 msgid "SSL ca"
-msgstr "SSL CA"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:73
 msgid "SSL cert"
-msgstr "SSL-tanúsítvány"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:73
 msgid "SSL certificate file path"
-msgstr "SSL-tanúsítványfájl elérési útja"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:76
 msgid "SSL key"
-msgstr "SSL-kulcs"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:76
 msgid "SSL key file path"
-msgstr "SSL-kulcsfájl elérési útja"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:53
 msgid "Send option to client"
-msgstr "Beállítás küldése a kliensnek"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:82
 msgid "Set log level (default: 7)"
-msgstr "Naplózási szint beállítása (alapértelmezett: 7)"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:46
 msgid "Signal"
@@ -214,44 +206,44 @@ msgstr "Jel"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:46
 msgid "Signal to send to the command when exit it (default: 1, SIGHUP)"
-msgstr "A parancsnak kilépéskor küldött jelzés (alapértelmezett: 1, SIGHUP)"
+msgstr ""
 
 #: applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json:3
 #: applications/luci-app-ttyd/root/usr/share/luci/menu.d/luci-app-ttyd.json:14
 msgid "Terminal"
-msgstr "Terminál"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:56
 msgid "Terminal type"
-msgstr "Terminál típusa"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:56
 msgid "Terminal type to report (default: xterm-256color)"
-msgstr "A jelentett termináltípus (alapértelmezett: xterm-256color)"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:32
 msgid "UNIX domain socket path (eg: /var/run/ttyd.sock)"
-msgstr "UNIX-tartománysocket elérési útja (pl. /var/run/ttyd.sock)"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:20
 msgid "UNIX socket"
-msgstr "UNIX-socket"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:32
 msgid "UNIX socket path"
-msgstr "UNIX-socket elérési útja"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:91
 msgid "URL override"
-msgstr "URL felülbírálása"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:40
 msgid "User ID"
-msgstr "Felhasználóazonosító"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:40
 msgid "User id to run with"
-msgstr "A futtatáshoz használt felhasználóazonosító"
+msgstr ""
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:84
 msgid "Warning"
@@ -259,4 +251,4 @@ msgstr "Figyelmeztetés"
 
 #: applications/luci-app-ttyd/htdocs/luci-static/resources/view/ttyd/config.js:12
 msgid "ttyd Instance"
-msgstr "ttyd-példány"
+msgstr ""
