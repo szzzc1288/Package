@@ -33,7 +33,7 @@ git clone --depth 1 https://github.com/fw876/helloworld && mv -n helloworld/{dns
 #git clone --depth 1 https://github.com/kiddin9/kwrt-packages && mv -n kwrt-packages/luci-app-bypass kwrt-packages/luci-app-fileassistant ./ ; rm -rf kwrt-packages
 git clone --depth 1 https://github.com/sirpdboy/luci-theme-opentopd && rm -rf luci-theme-opentopd/.git
 
-git_sparse_clone master "https://github.com/openwrt/luci" "zzcluci" applications/luci-app-ttyd
+git_sparse_clone master "https://github.com/immortalwrt/luci" "zzcluci" applications/luci-app-ttyd
 git_sparse_clone master "https://github.com/immortalwrt/packages" "immpack" net/haproxy
 
 find . -type f -name "update.sh" -exec rm -f {} \;
